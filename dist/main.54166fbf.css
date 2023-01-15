@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "nanum";
+  src: url("/나눔손글씨 세계적인 한글.277ac778.ttf") format("truetype");
+  font-weight: normal;
+}
+body {
+  background-color: #7ebb54;
+  font-family: "nanum", sans-serif;
+}
+
+#wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+#wrap > div {
+  width: 480px;
+  height: 100%;
+  background-color: #fff;
+  padding: 50px 60px;
+  box-sizing: border-box;
+}
+#wrap > div h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.calendar-container {
+  height: 350px;
+}
+
+.quotes-container p {
+  font-size: 28px;
+}
+
+/*# sourceMappingURL=/main.54166fbf.css.map */

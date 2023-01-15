@@ -1,1 +1,5 @@
-console.log("hello world");
+import getQuote from "./getQuotes";
+
+window.onload = function () {
+  getQuote();
+};
