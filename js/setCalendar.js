@@ -25,3 +25,10 @@ for (let i = 1; i <= nextDate; i++) {
 // 현재 월 표기
 const month = document.querySelector(".month");
 month.textContent = `${currentYear}.${currentMonth + 1}`;
+
+// 오늘 날짜 표기
+if (today.getMonth() === currentMonth) {
+  const todayDate = today.getDate();
+  const currentMonthDate = document.querySelectorAll(".day");
+  currentMonthDate[todayDate - 1].classList.add("today");
+}

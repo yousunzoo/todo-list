@@ -145,6 +145,13 @@ for (var i = 1; i <= nextDate; i++) {
 // 현재 월 표기
 var month = document.querySelector(".month");
 month.textContent = "".concat(currentYear, ".").concat(currentMonth + 1);
+
+// 오늘 날짜 표기
+if (today.getMonth() === currentMonth) {
+  var todayDate = today.getDate();
+  var currentMonthDate = document.querySelectorAll(".day");
+  currentMonthDate[todayDate - 1].classList.add("today");
+}
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

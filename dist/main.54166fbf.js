@@ -172,7 +172,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\font\\나눔손글씨 세계적인 한글.ttf":[["나눔손글씨 세계적인 한글.277ac778.ttf","font/나눔손글씨 세계적인 한글.ttf"],"font/나눔손글씨 세계적인 한글.ttf"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\font\\나눔손글씨 세계적인 한글.ttf":[["나눔손글씨 세계적인 한글.277ac778.ttf","font/나눔손글씨 세계적인 한글.ttf"],"font/나눔손글씨 세계적인 한글.ttf"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

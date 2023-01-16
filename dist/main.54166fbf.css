@@ -104,9 +104,10 @@ body {
   grid-template-columns: repeat(7, 1fr);
 }
 .calendar-container .days .day {
+  position: relative;
   text-align: center;
   height: 50px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 50px;
 }
 .calendar-container .days .day:nth-child(7n+1) {
@@ -114,6 +115,18 @@ body {
 }
 .calendar-container .days .day:nth-child(7n) {
   color: #3c6ffa;
+}
+.calendar-container .days .day.today::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  background-image: url("/today.1a4b5bd2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .quotes-container p {
