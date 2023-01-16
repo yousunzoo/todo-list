@@ -33,6 +33,48 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
 }
+#wrap > .spring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  background-color: transparent;
+  margin: auto;
+  width: 130px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+#wrap > .spring > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#wrap > .spring > div div {
+  width: 25px;
+  height: 25px;
+  background-color: #7ebb54;
+  border-radius: 100%;
+}
+#wrap > .spring > .springs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 292px;
+}
+#wrap > .spring > .springs div {
+  width: 88%;
+  height: 18px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #58575a;
+}
 
 .calendar-container {
   height: 350px;

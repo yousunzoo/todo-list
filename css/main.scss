@@ -33,6 +33,48 @@ body {
       margin-bottom: 20px;
     }
   }
+  > .spring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    background-color: transparent;
+    margin: auto;
+    width: 130px;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      div {
+        width: 25px;
+        height: 25px;
+        background-color: #7ebb54;
+        border-radius: 100%;
+      }
+    }
+    > .springs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 100%;
+      height: 292px;
+      div {
+        width: 88%;
+        height: 18px;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: #58575a;
+      }
+    }
+  }
 }
 
 .calendar-container {
