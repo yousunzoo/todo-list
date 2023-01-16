@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- reset.css -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
@@ -18,7 +23,18 @@
       <div class="left-page">
         <div class="calendar-container">
           <h2>Calendar</h2>
-          <div class="calendar"></div>
+          <div class="calendar">
+            <div class="select-month">
+              <button class="prev material-symbols-outlined">
+                arrow_back_ios
+              </button>
+              <h3 class="month"></h3>
+              <button class="next material-symbols-outlined">
+                arrow_forward_ios
+              </button>
+            </div>
+            <div class="days"></div>
+          </div>
         </div>
         <div class="quotes-container">
           <h2>Today's Quote</h2>

@@ -118,7 +118,33 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/setCalendar.js":[function(require,module,exports) {
+var today = new Date();
+var currentYear = today.getFullYear();
+var currentMonth = today.getMonth();
 
+// 이전 달의 마지막 날 날짜와 요일 구하기
+// 날짜를 0으로 지정하면 저번 달의 마지막 날짜를 가진 date 객체가 반환됨
+var startDay = new Date(currentYear, currentMonth, 0);
+var prevDate = startDay.getDate();
+var prevDay = startDay.getDay();
+
+// 이번 달의 마지막 날 날짜와 요일 구하기
+var endDay = new Date(currentYear, currentMonth + 1, 0);
+var nextDate = endDay.getDate();
+var nextDay = endDay.getDay();
+
+// 달력 렌더링
+var calendar = document.querySelector(".days");
+calendar.innerHTML = "";
+
+// 이번 달 렌더링
+for (var i = 1; i <= nextDate; i++) {
+  calendar.innerHTML = calendar.innerHTML + "<div class=\"day\">".concat(i, "</div>");
+}
+
+// 현재 월 표기
+var month = document.querySelector(".month");
+month.textContent = "".concat(currentYear, ".").concat(currentMonth + 1);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -25,11 +25,11 @@ body {
   width: 480px;
   height: 100%;
   background-color: #fff;
-  padding: 50px 60px;
+  padding: 40px 60px;
   box-sizing: border-box;
 }
 #wrap > div h2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -78,10 +78,46 @@ body {
 
 .calendar-container {
   height: 350px;
+  margin-bottom: 50px;
+}
+.calendar-container .select-month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calendar-container .select-month h3 {
+  font-size: 28px;
+}
+.calendar-container .select-month button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+.calendar-container .days {
+  display: grid;
+  width: 90%;
+  margin: auto;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar-container .days .day {
+  text-align: center;
+  height: 50px;
+  font-size: 20px;
+  line-height: 50px;
+}
+.calendar-container .days .day:nth-child(7n+1) {
+  color: #ed2a61;
+}
+.calendar-container .days .day:nth-child(7n) {
+  color: #3c6ffa;
 }
 
 .quotes-container p {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=/main.54166fbf.css.map */
