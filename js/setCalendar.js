@@ -1,6 +1,6 @@
 const today = new Date();
-const currentYear = today.getFullYear();
-const currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
+let currentMonth = today.getMonth();
 
 // 이전 달의 마지막 날 날짜와 요일 구하기
 // 날짜를 0으로 지정하면 저번 달의 마지막 날짜를 가진 date 객체가 반환됨
@@ -14,12 +14,28 @@ const nextDate = endDay.getDate();
 const nextDay = endDay.getDay();
 
 // 달력 렌더링
-const calendar = document.querySelector(".days");
-calendar.innerHTML = "";
+const thisMon = document.querySelector(".days");
+thisMon.innerHTML = "";
 
+// 지난 달 렌더링
+// 이번 달 시작 요일이 일요일이면 지날 달 출력 X
+if (prevDay != 6) {
+  for (let i = prevDate - prevDay; i <= prevDate; i++) {
+    thisMon.innerHTML =
+      thisMon.innerHTML + `<div class="day disable">${i}</div>`;
+  }
+}
 // 이번 달 렌더링
 for (let i = 1; i <= nextDate; i++) {
-  calendar.innerHTML = calendar.innerHTML + `<div class="day">${i}</div>`;
+  thisMon.innerHTML = thisMon.innerHTML + `<div class="day">${i}</div>`;
+}
+
+// 다음 달 렌더링
+if (nextDay !== 6) {
+  for (let i = 1; i < 7 - nextDay; i++) {
+    thisMon.innerHTML =
+      thisMon.innerHTML + `<div class="day disable">${i}</div>`;
+  }
 }
 
 // 현재 월 표기

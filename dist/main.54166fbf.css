@@ -97,26 +97,30 @@ body {
   text-align: center;
   cursor: pointer;
 }
-.calendar-container .days {
+.calendar-container .days-container {
+  width: 350px;
+  overflow: hidden;
+}
+.calendar-container .days-container .days {
   display: grid;
-  width: 90%;
+  width: 350px;
   margin: auto;
   grid-template-columns: repeat(7, 1fr);
 }
-.calendar-container .days .day {
+.calendar-container .days-container .days .day {
   position: relative;
   text-align: center;
   height: 50px;
   font-size: 24px;
   line-height: 50px;
 }
-.calendar-container .days .day:nth-child(7n+1) {
+.calendar-container .days-container .days .day:nth-child(7n+1) {
   color: #ed2a61;
 }
-.calendar-container .days .day:nth-child(7n) {
+.calendar-container .days-container .days .day:nth-child(7n) {
   color: #3c6ffa;
 }
-.calendar-container .days .day.today::after {
+.calendar-container .days-container .days .day.today::after {
   content: "";
   position: absolute;
   width: 50px;
@@ -127,6 +131,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+.calendar-container .days-container .days .disable {
+  opacity: 0.3;
 }
 
 .quotes-container p {

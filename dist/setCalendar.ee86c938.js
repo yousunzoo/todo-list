@@ -134,12 +134,26 @@ var nextDate = endDay.getDate();
 var nextDay = endDay.getDay();
 
 // 달력 렌더링
-var calendar = document.querySelector(".days");
-calendar.innerHTML = "";
+var thisMon = document.querySelector(".days");
+thisMon.innerHTML = "";
 
+// 지난 달 렌더링
+// 이번 달 시작 요일이 일요일이면 지날 달 출력 X
+if (prevDay != 6) {
+  for (var i = prevDate - prevDay; i <= prevDate; i++) {
+    thisMon.innerHTML = thisMon.innerHTML + "<div class=\"day disable\">".concat(i, "</div>");
+  }
+}
 // 이번 달 렌더링
-for (var i = 1; i <= nextDate; i++) {
-  calendar.innerHTML = calendar.innerHTML + "<div class=\"day\">".concat(i, "</div>");
+for (var _i = 1; _i <= nextDate; _i++) {
+  thisMon.innerHTML = thisMon.innerHTML + "<div class=\"day\">".concat(_i, "</div>");
+}
+
+// 다음 달 렌더링
+if (nextDay !== 6) {
+  for (var _i2 = 1; _i2 < 7 - nextDay; _i2++) {
+    thisMon.innerHTML = thisMon.innerHTML + "<div class=\"day disable\">".concat(_i2, "</div>");
+  }
 }
 
 // 현재 월 표기
@@ -177,7 +191,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56211" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

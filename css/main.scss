@@ -97,34 +97,41 @@ body {
       cursor: pointer;
     }
   }
-  .days {
-    display: grid;
-    width: 90%;
-    margin: auto;
-    grid-template-columns: repeat(7, 1fr);
-    .day {
-      position: relative;
-      text-align: center;
-      height: 50px;
-      font-size: 24px;
-      line-height: 50px;
-      &:nth-child(7n + 1) {
-        color: #ed2a61;
-      }
-      &:nth-child(7n) {
-        color: #3c6ffa;
-      }
-      &.today::after {
-        content: "";
-        position: absolute;
-        width: 50px;
+  .days-container {
+    width: 350px;
+    overflow: hidden;
+    .days {
+      display: grid;
+      width: 350px;
+      margin: auto;
+      grid-template-columns: repeat(7, 1fr);
+      .day {
+        position: relative;
+        text-align: center;
         height: 50px;
-        top: 0;
-        left: 0;
-        background-image: url("/images/today.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+        font-size: 24px;
+        line-height: 50px;
+        &:nth-child(7n + 1) {
+          color: #ed2a61;
+        }
+        &:nth-child(7n) {
+          color: #3c6ffa;
+        }
+        &.today::after {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 0;
+          left: 0;
+          background-image: url("/images/today.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
+      .disable {
+        opacity: 0.3;
       }
     }
   }
