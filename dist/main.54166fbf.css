@@ -99,7 +99,8 @@ body {
 }
 .calendar-container .days-container {
   width: 350px;
-  overflow: hidden;
+  margin: auto;
+  position: relative;
 }
 .calendar-container .days-container .days {
   display: grid;

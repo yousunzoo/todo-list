@@ -99,7 +99,8 @@ body {
   }
   .days-container {
     width: 350px;
-    overflow: hidden;
+    margin: auto;
+    position: relative;
     .days {
       display: grid;
       width: 350px;
