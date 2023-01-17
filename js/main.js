@@ -85,7 +85,6 @@ async function editTodos(todo) {
       }
     );
     const json = await res.json();
-    console.log(json);
     return json;
   } catch (error) {
     // 강제로 에러 발생!
@@ -145,10 +144,16 @@ function renderTodo(todos) {
     const checkbox = todoLi.querySelector("input");
     const checkLabel = todoLi.querySelector("label");
     const todoText = todoLi.querySelector("p");
+    const deleteBtn = todoLi.querySelector(".btn--delete");
+    const editBtn = todoLi.querySelector(".btn--edit");
+
+    // 할 일이 완료된 상태면 checkbox 체크
     if (todo.done) {
       checkbox.checked = true;
       todoText.classList.add("done");
     }
+
+    // checkbox 눌러서 할 일 완료 시키면 api에 수정 요청
     checkLabel.addEventListener("click", async function (e) {
       e.preventDefault();
       todo.done = !todo.done;
@@ -158,6 +163,15 @@ function renderTodo(todos) {
         ? todoText.classList.add("done")
         : todoText.classList.remove("done");
       await editTodos(todo);
+    });
+
+    // deleteBtn 누르면 해당 할 일 삭제
+    deleteBtn.addEventListener("click", async function () {
+      loader.style.display = "block";
+      deleteTodos(todo.id);
+      const todos = await readTodos();
+      renderTodo(todos);
+      loader.style.display = "none";
     });
     return todoLi;
   });

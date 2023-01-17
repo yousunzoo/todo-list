@@ -357,43 +357,7 @@ function createTodo(_x) {
   return _createTodo.apply(this, arguments);
 }
 function _createTodo() {
-  _createTodo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(title) {
-    var res, json;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
-        case 0:
-          _context4.prev = 0;
-          _context4.next = 3;
-          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({
-              title: title
-            })
-          });
-        case 3:
-          res = _context4.sent;
-          _context4.next = 6;
-          return res.json();
-        case 6:
-          json = _context4.sent;
-          return _context4.abrupt("return", json);
-        case 10:
-          _context4.prev = 10;
-          _context4.t0 = _context4["catch"](0);
-        case 12:
-        case "end":
-          return _context4.stop();
-      }
-    }, _callee4, null, [[0, 10]]);
-  }));
-  return _createTodo.apply(this, arguments);
-}
-function readTodos() {
-  return _readTodos.apply(this, arguments);
-}
-function _readTodos() {
-  _readTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+  _createTodo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(title) {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
@@ -401,8 +365,11 @@ function _readTodos() {
           _context5.prev = 0;
           _context5.next = 3;
           return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
-            method: "GET",
-            headers: headers
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({
+              title: title
+            })
           });
         case 3:
           res = _context5.sent;
@@ -414,28 +381,27 @@ function _readTodos() {
         case 10:
           _context5.prev = 10;
           _context5.t0 = _context5["catch"](0);
-          throw _context5.t0;
-        case 13:
+        case 12:
         case "end":
           return _context5.stop();
       }
     }, _callee5, null, [[0, 10]]);
   }));
+  return _createTodo.apply(this, arguments);
+}
+function readTodos() {
   return _readTodos.apply(this, arguments);
 }
-function deleteTodos(_x2) {
-  return _deleteTodos.apply(this, arguments);
-}
-function _deleteTodos() {
-  _deleteTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(id) {
+function _readTodos() {
+  _readTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
       while (1) switch (_context6.prev = _context6.next) {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(id), {
-            method: "DELETE",
+          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
+            method: "GET",
             headers: headers
           });
         case 3:
@@ -455,19 +421,53 @@ function _deleteTodos() {
       }
     }, _callee6, null, [[0, 10]]);
   }));
+  return _readTodos.apply(this, arguments);
+}
+function deleteTodos(_x2) {
   return _deleteTodos.apply(this, arguments);
 }
-function editTodos(_x3) {
-  return _editTodos.apply(this, arguments);
-} // 버튼 누르면 모달창 등장
-function _editTodos() {
-  _editTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(todo) {
+function _deleteTodos() {
+  _deleteTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(id) {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
           _context7.prev = 0;
           _context7.next = 3;
+          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(id), {
+            method: "DELETE",
+            headers: headers
+          });
+        case 3:
+          res = _context7.sent;
+          _context7.next = 6;
+          return res.json();
+        case 6:
+          json = _context7.sent;
+          return _context7.abrupt("return", json);
+        case 10:
+          _context7.prev = 10;
+          _context7.t0 = _context7["catch"](0);
+          throw _context7.t0;
+        case 13:
+        case "end":
+          return _context7.stop();
+      }
+    }, _callee7, null, [[0, 10]]);
+  }));
+  return _deleteTodos.apply(this, arguments);
+}
+function editTodos(_x3) {
+  return _editTodos.apply(this, arguments);
+} // 버튼 누르면 모달창 등장
+function _editTodos() {
+  _editTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(todo) {
+    var res, json;
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.prev = 0;
+          _context8.next = 3;
           return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(todo.id), {
             method: "PUT",
             headers: headers,
@@ -477,22 +477,21 @@ function _editTodos() {
             })
           });
         case 3:
-          res = _context7.sent;
-          _context7.next = 6;
+          res = _context8.sent;
+          _context8.next = 6;
           return res.json();
         case 6:
-          json = _context7.sent;
-          console.log(json);
-          return _context7.abrupt("return", json);
-        case 11:
-          _context7.prev = 11;
-          _context7.t0 = _context7["catch"](0);
-          throw _context7.t0;
-        case 14:
+          json = _context8.sent;
+          return _context8.abrupt("return", json);
+        case 10:
+          _context8.prev = 10;
+          _context8.t0 = _context8["catch"](0);
+          throw _context8.t0;
+        case 13:
         case "end":
-          return _context7.stop();
+          return _context8.stop();
       }
-    }, _callee7, null, [[0, 11]]);
+    }, _callee8, null, [[0, 10]]);
   }));
   return _editTodos.apply(this, arguments);
 }
@@ -558,10 +557,16 @@ function renderTodo(todos) {
     var checkbox = todoLi.querySelector("input");
     var checkLabel = todoLi.querySelector("label");
     var todoText = todoLi.querySelector("p");
+    var deleteBtn = todoLi.querySelector(".btn--delete");
+    var editBtn = todoLi.querySelector(".btn--edit");
+
+    // 할 일이 완료된 상태면 checkbox 체크
     if (todo.done) {
       checkbox.checked = true;
       todoText.classList.add("done");
     }
+
+    // checkbox 눌러서 할 일 완료 시키면 api에 수정 요청
     checkLabel.addEventListener("click", /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -583,6 +588,27 @@ function renderTodo(todos) {
         return _ref3.apply(this, arguments);
       };
     }());
+
+    // deleteBtn 누르면 해당 할 일 삭제
+    deleteBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var todos;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            loader.style.display = "block";
+            deleteTodos(todo.id);
+            _context4.next = 4;
+            return readTodos();
+          case 4:
+            todos = _context4.sent;
+            renderTodo(todos);
+            loader.style.display = "none";
+          case 7:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4);
+    })));
     return todoLi;
   });
   todoListEl.innerHTML = "";
