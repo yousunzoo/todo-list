@@ -133,13 +133,13 @@ function InitCalandar() {
 }
 function _InitCalandar() {
   _InitCalandar = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var today, renderCalendar, _renderCalendar;
+    var today, curYear, curMonth, moveMonth, renderCalendar, _renderCalendar, prevBtn, loadingEl, isRunning, nextBtn;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _renderCalendar = function _renderCalendar3() {
             _renderCalendar = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(thisMonth) {
-              var currentYear, currentMonth, startDay, prevDate, prevDay, endDay, nextDate, nextDay, setCalender, prevBtn, nextBtn;
+              var currentYear, currentMonth, startDay, prevDate, prevDay, endDay, nextDate, nextDay, setCalender;
               return _regeneratorRuntime().wrap(function _callee3$(_context3) {
                 while (1) switch (_context3.prev = _context3.next) {
                   case 0:
@@ -172,7 +172,7 @@ function _InitCalandar() {
                       month.textContent = "".concat(currentYear, ".").concat(currentMonth + 1);
 
                       // 오늘 날짜 표기
-                      if (today.getMonth() === currentMonth) {
+                      if (today.getMonth() === currentMonth && today.getFullYear() === currentYear) {
                         var todayDate = today.getDate();
                         var currentMonthDate = document.querySelectorAll(".day");
                         currentMonthDate[todayDate - 1].classList.add("today");
@@ -187,40 +187,8 @@ function _InitCalandar() {
                     endDay = new Date(currentYear, currentMonth + 1, 0);
                     nextDate = endDay.getDate();
                     nextDay = endDay.getDay();
-                    _context3.next = 11;
-                    return setCalender();
-                  case 11:
-                    // prev 버튼 누르면 지난 달로 이동
-                    prevBtn = document.querySelector(".select-month .prev");
-                    prevBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-                      return _regeneratorRuntime().wrap(function _callee$(_context) {
-                        while (1) switch (_context.prev = _context.next) {
-                          case 0:
-                            thisMonth = new Date(currentYear, currentMonth - 1, 1);
-                            _context.next = 3;
-                            return renderCalendar(thisMonth);
-                          case 3:
-                          case "end":
-                            return _context.stop();
-                        }
-                      }, _callee);
-                    })));
-                    // next 버튼 누르면 다음 달로 이동
-                    nextBtn = document.querySelector(".select-month .next");
-                    nextBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-                      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-                        while (1) switch (_context2.prev = _context2.next) {
-                          case 0:
-                            thisMonth = new Date(currentYear, currentMonth + 1, 1);
-                            _context2.next = 3;
-                            return renderCalendar(thisMonth);
-                          case 3:
-                          case "end":
-                            return _context2.stop();
-                        }
-                      }, _callee2);
-                    })));
-                  case 15:
+                    setCalender();
+                  case 10:
                   case "end":
                     return _context3.stop();
                 }
@@ -232,9 +200,64 @@ function _InitCalandar() {
             return _renderCalendar.apply(this, arguments);
           };
           today = new Date();
-          _context4.next = 5;
+          curYear = today.getFullYear();
+          curMonth = today.getMonth();
+          _context4.next = 7;
           return renderCalendar(today);
-        case 5:
+        case 7:
+          // prev 버튼 누르면 지난 달로 이동
+          prevBtn = document.querySelector(".select-month .prev");
+          loadingEl = document.querySelector(".loading");
+          isRunning = false;
+          prevBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) switch (_context.prev = _context.next) {
+                case 0:
+                  if (!isRunning) {
+                    _context.next = 2;
+                    break;
+                  }
+                  return _context.abrupt("return");
+                case 2:
+                  isRunning = true;
+                  curMonth = curMonth - 1;
+                  moveMonth = new Date(curYear, curMonth, 1);
+                  _context.next = 7;
+                  return renderCalendar(moveMonth);
+                case 7:
+                  isRunning = false;
+                case 8:
+                case "end":
+                  return _context.stop();
+              }
+            }, _callee);
+          })));
+          // next 버튼 누르면 다음 달로 이동
+          nextBtn = document.querySelector(".select-month .next");
+          nextBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+              while (1) switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!isRunning) {
+                    _context2.next = 2;
+                    break;
+                  }
+                  return _context2.abrupt("return");
+                case 2:
+                  isRunning = true;
+                  curMonth = curMonth + 1;
+                  moveMonth = new Date(curYear, curMonth, 1);
+                  _context2.next = 7;
+                  return renderCalendar(moveMonth);
+                case 7:
+                  isRunning = false;
+                case 8:
+                case "end":
+                  return _context2.stop();
+              }
+            }, _callee2);
+          })));
+        case 13:
         case "end":
           return _context4.stop();
       }
@@ -267,7 +290,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56211" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53095" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

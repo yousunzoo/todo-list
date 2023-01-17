@@ -1,5 +1,8 @@
 export default async function InitCalandar() {
   const today = new Date();
+  let curYear = today.getFullYear();
+  let curMonth = today.getMonth();
+  let moveMonth;
   await renderCalendar(today);
 
   async function renderCalendar(thisMonth) {
@@ -17,7 +20,8 @@ export default async function InitCalandar() {
     const nextDate = endDay.getDate();
     const nextDay = endDay.getDay();
 
-    await setCalender();
+    setCalender();
+
     function setCalender() {
       // 달력 렌더링
       const thisMon = document.querySelector(".days");
@@ -49,24 +53,37 @@ export default async function InitCalandar() {
       month.textContent = `${currentYear}.${currentMonth + 1}`;
 
       // 오늘 날짜 표기
-      if (today.getMonth() === currentMonth) {
+      if (
+        today.getMonth() === currentMonth &&
+        today.getFullYear() === currentYear
+      ) {
         const todayDate = today.getDate();
         const currentMonthDate = document.querySelectorAll(".day");
         currentMonthDate[todayDate - 1].classList.add("today");
       }
     }
-
-    // prev 버튼 누르면 지난 달로 이동
-    const prevBtn = document.querySelector(".select-month .prev");
-    prevBtn.addEventListener("click", async function () {
-      thisMonth = new Date(currentYear, currentMonth - 1, 1);
-      await renderCalendar(thisMonth);
-    });
-    // next 버튼 누르면 다음 달로 이동
-    const nextBtn = document.querySelector(".select-month .next");
-    nextBtn.addEventListener("click", async function () {
-      thisMonth = new Date(currentYear, currentMonth + 1, 1);
-      await renderCalendar(thisMonth);
-    });
   }
+  // prev 버튼 누르면 지난 달로 이동
+  const prevBtn = document.querySelector(".select-month .prev");
+  const loadingEl = document.querySelector(".loading");
+  let isRunning = false;
+
+  prevBtn.addEventListener("click", async function () {
+    if (isRunning) return;
+    isRunning = true;
+    curMonth = curMonth - 1;
+    moveMonth = new Date(curYear, curMonth, 1);
+    await renderCalendar(moveMonth);
+    isRunning = false;
+  });
+  // next 버튼 누르면 다음 달로 이동
+  const nextBtn = document.querySelector(".select-month .next");
+  nextBtn.addEventListener("click", async function () {
+    if (isRunning) return;
+    isRunning = true;
+    curMonth = curMonth + 1;
+    moveMonth = new Date(curYear, curMonth, 1);
+    await renderCalendar(moveMonth);
+    isRunning = false;
+  });
 }
