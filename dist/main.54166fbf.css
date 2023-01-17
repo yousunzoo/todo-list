@@ -4,14 +4,6 @@
   src: url("/나눔손글씨 세계적인 한글.277ac778.ttf") format("truetype");
   font-weight: normal;
 }
-@keyframes stretch {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
 * button {
   border: none;
   background-color: transparent;
@@ -195,17 +187,20 @@ body {
   display: inline-block;
   position: relative;
 }
-.todo-container .todo-list li p.done > span::after {
-  width: 100%;
+.todo-container .todo-list li p span::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   margin: auto;
+  width: 0;
   height: 2px;
   background-color: black;
-  animation: stretch 0.6s;
+  transition: width 0.6s ease;
+}
+.todo-container .todo-list li p.done > span::after {
+  width: 100%;
 }
 .todo-container .todo-list li .btns {
   display: flex;

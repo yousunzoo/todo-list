@@ -151,10 +151,12 @@ function renderTodo(todos) {
     checkLabel.addEventListener("click", async function (e) {
       e.preventDefault();
       todo.done = !todo.done;
-      console.log(todo.done);
+
+      checkbox.checked = todo.done;
+      todo.done
+        ? todoText.classList.add("done")
+        : todoText.classList.remove("done");
       await editTodos(todo);
-      todos = await readTodos();
-      renderTodo(todos);
     });
     return todoLi;
   });

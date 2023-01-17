@@ -567,16 +567,11 @@ function renderTodo(todos) {
             case 0:
               e.preventDefault();
               todo.done = !todo.done;
-              console.log(todo.done);
-              _context3.next = 5;
+              checkbox.checked = todo.done;
+              todo.done ? todoText.classList.add("done") : todoText.classList.remove("done");
+              _context3.next = 6;
               return editTodos(todo);
-            case 5:
-              _context3.next = 7;
-              return readTodos();
-            case 7:
-              todos = _context3.sent;
-              renderTodo(todos);
-            case 9:
+            case 6:
             case "end":
               return _context3.stop();
           }
