@@ -14,7 +14,6 @@
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="/css/main.scss" />
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
-    <script type="module" defer src="/js/setCalendar.js"></script>
     <script type="module" defer src="/js/main.js"></script>
     <title>투두 리스트</title>
   </head>
@@ -38,9 +37,9 @@
             </div>
           </div>
         </div>
-        <div class="quotes-container">
-          <h2>Today's Quote</h2>
-          <p class="quotes"></p>
+        <div class="advice-container">
+          <h2>Today's Advice</h2>
+          <p class="advice"></p>
         </div>
       </div>
       <div class="spring">
@@ -69,11 +68,14 @@
               <label for="chk_done"></label>
               <p class="todo"><span>빨래 하기</span></p>
               <div class="btns">
-                <button class="edit"></button>
-                <button class="delete"></button>
+                <button class="btn--edit"></button>
+                <button class="btn--delete"></button>
               </div>
             </li>
           </ul>
+          <button class="btn--add">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
         </div>
       </div>
     </div>
@@ -93,6 +95,16 @@
         >Trash Can</a
       >
       icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </div>
+    <div id="modal">
+      <div class="modal-layer"></div>
+      <div class="modal-container">
+        <form class="add-todo">
+          <h2>할 일 추가</h2>
+          <input type="text" placeholder="추가할 할 일을 입력해주세요" />
+          <button class="btn--add-todo">추가</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
