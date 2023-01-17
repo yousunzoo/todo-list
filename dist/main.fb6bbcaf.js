@@ -338,16 +338,12 @@ window.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime
       case 6:
         todos = _context.sent;
         renderTodo(todos);
-        loader.style.display = "none";
-      case 9:
+      case 8:
       case "end":
         return _context.stop();
     }
   }, _callee);
 }));
-
-// const todos = await readTodos();
-
 var headers = {
   "content-type": "application/json",
   apikey: "FcKdtJs202301",
@@ -357,43 +353,7 @@ function createTodo(_x) {
   return _createTodo.apply(this, arguments);
 }
 function _createTodo() {
-  _createTodo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(title) {
-    var res, json;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
-        case 0:
-          _context5.prev = 0;
-          _context5.next = 3;
-          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({
-              title: title
-            })
-          });
-        case 3:
-          res = _context5.sent;
-          _context5.next = 6;
-          return res.json();
-        case 6:
-          json = _context5.sent;
-          return _context5.abrupt("return", json);
-        case 10:
-          _context5.prev = 10;
-          _context5.t0 = _context5["catch"](0);
-        case 12:
-        case "end":
-          return _context5.stop();
-      }
-    }, _callee5, null, [[0, 10]]);
-  }));
-  return _createTodo.apply(this, arguments);
-}
-function readTodos() {
-  return _readTodos.apply(this, arguments);
-}
-function _readTodos() {
-  _readTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+  _createTodo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(title) {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
       while (1) switch (_context6.prev = _context6.next) {
@@ -401,8 +361,11 @@ function _readTodos() {
           _context6.prev = 0;
           _context6.next = 3;
           return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
-            method: "GET",
-            headers: headers
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({
+              title: title
+            })
           });
         case 3:
           res = _context6.sent;
@@ -414,28 +377,27 @@ function _readTodos() {
         case 10:
           _context6.prev = 10;
           _context6.t0 = _context6["catch"](0);
-          throw _context6.t0;
-        case 13:
+        case 12:
         case "end":
           return _context6.stop();
       }
     }, _callee6, null, [[0, 10]]);
   }));
+  return _createTodo.apply(this, arguments);
+}
+function readTodos() {
   return _readTodos.apply(this, arguments);
 }
-function deleteTodos(_x2) {
-  return _deleteTodos.apply(this, arguments);
-}
-function _deleteTodos() {
-  _deleteTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(id) {
+function _readTodos() {
+  _readTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
           _context7.prev = 0;
           _context7.next = 3;
-          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(id), {
-            method: "DELETE",
+          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos", {
+            method: "GET",
             headers: headers
           });
         case 3:
@@ -455,26 +417,22 @@ function _deleteTodos() {
       }
     }, _callee7, null, [[0, 10]]);
   }));
+  return _readTodos.apply(this, arguments);
+}
+function deleteTodos(_x2) {
   return _deleteTodos.apply(this, arguments);
 }
-function editTodos(_x3) {
-  return _editTodos.apply(this, arguments);
-} // 버튼 누르면 모달창 등장
-function _editTodos() {
-  _editTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(todo) {
+function _deleteTodos() {
+  _deleteTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id) {
     var res, json;
     return _regeneratorRuntime().wrap(function _callee8$(_context8) {
       while (1) switch (_context8.prev = _context8.next) {
         case 0:
           _context8.prev = 0;
           _context8.next = 3;
-          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(todo.id), {
-            method: "PUT",
-            headers: headers,
-            body: JSON.stringify({
-              title: todo.title,
-              done: todo.done
-            })
+          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(id), {
+            method: "DELETE",
+            headers: headers
           });
         case 3:
           res = _context8.sent;
@@ -493,23 +451,64 @@ function _editTodos() {
       }
     }, _callee8, null, [[0, 10]]);
   }));
+  return _deleteTodos.apply(this, arguments);
+}
+function editTodos(_x3) {
+  return _editTodos.apply(this, arguments);
+} // 버튼 누르면 모달창 등장
+function _editTodos() {
+  _editTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(todo) {
+    var res, json;
+    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+      while (1) switch (_context9.prev = _context9.next) {
+        case 0:
+          _context9.prev = 0;
+          _context9.next = 3;
+          return fetch("https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/".concat(todo.id), {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify({
+              title: todo.title,
+              done: todo.done
+            })
+          });
+        case 3:
+          res = _context9.sent;
+          _context9.next = 6;
+          return res.json();
+        case 6:
+          json = _context9.sent;
+          return _context9.abrupt("return", json);
+        case 10:
+          _context9.prev = 10;
+          _context9.t0 = _context9["catch"](0);
+          throw _context9.t0;
+        case 13:
+        case "end":
+          return _context9.stop();
+      }
+    }, _callee9, null, [[0, 10]]);
+  }));
   return _editTodos.apply(this, arguments);
 }
 var addBtn = document.querySelector(".btn--add");
 var modalEl = document.getElementById("modal");
 var modalLayerEl = modalEl.querySelector(".modal-layer");
-var addTodoInput = modalEl.querySelector(".add-todo").querySelector("input");
-var addTodoBtn = modalEl.querySelector(".btn--add-todo");
+var addModal = modalEl.querySelector(".add-todo");
+var addTodoInput = addModal.querySelector("input");
+var addTodoBtn = addModal.querySelector(".btn--add-todo");
 addBtn.addEventListener("click", function () {
   var _addTodoInput$classLi;
   addTodoInput.value = "";
   (_addTodoInput$classLi = addTodoInput.classList) === null || _addTodoInput$classLi === void 0 ? void 0 : _addTodoInput$classLi.remove("alert");
+  addModal.style.display = "block";
   modalEl.classList.add("active");
 });
 
 // 모달 레이어 누르면 창 꺼짐
 modalLayerEl.addEventListener("click", function () {
   modalEl.classList.remove("active");
+  addModal.style.display = "none";
 });
 
 // 할 일 추가 모달에서 input 값 없으면 placeholder 색상 바뀜
@@ -539,7 +538,8 @@ addTodoBtn.addEventListener("click", /*#__PURE__*/function () {
           todos = _context2.sent;
           renderTodo(todos);
           modalEl.classList.remove("active");
-        case 12:
+          addModal.style.display = "none";
+        case 13:
         case "end":
           return _context2.stop();
       }
@@ -550,6 +550,7 @@ addTodoBtn.addEventListener("click", /*#__PURE__*/function () {
   };
 }());
 function renderTodo(todos) {
+  loader.style.display = "block";
   var todoListEl = document.querySelector(".todo-list");
   var todoEls = todos.map(function (todo) {
     var todoLi = document.createElement("li");
@@ -596,23 +597,63 @@ function renderTodo(todos) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
             loader.style.display = "block";
-            deleteTodos(todo.id);
-            _context4.next = 4;
+            _context4.next = 3;
+            return deleteTodos(todo.id);
+          case 3:
+            _context4.next = 5;
             return readTodos();
-          case 4:
+          case 5:
             todos = _context4.sent;
             renderTodo(todos);
-            loader.style.display = "none";
           case 7:
           case "end":
             return _context4.stop();
         }
       }, _callee4);
     })));
+
+    // editBtn 누르면 모달 창 등장
+    editBtn.addEventListener("click", function () {
+      var editForm = modalEl.querySelector(".edit-todo");
+      var editInput = editForm.querySelector("input");
+      var editBtn = editForm.querySelector("button");
+      editInput.value = todo.title;
+      editForm.style.display = "block";
+      modalEl.classList.add("active");
+      editBtn.addEventListener("click", /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
+          var todos;
+          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+            while (1) switch (_context5.prev = _context5.next) {
+              case 0:
+                e.preventDefault();
+                todo.title = editInput.value;
+                _context5.next = 4;
+                return editTodos(todo);
+              case 4:
+                _context5.next = 6;
+                return readTodos();
+              case 6:
+                todos = _context5.sent;
+                renderTodo(todos);
+                editForm.style.display = "none";
+                modalEl.classList.remove("active");
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }, _callee5);
+        }));
+        return function (_x6) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+    });
     return todoLi;
   });
   todoListEl.innerHTML = "";
   todoListEl.append.apply(todoListEl, _toConsumableArray(todoEls));
+  loader.style.display = "none";
 }
 },{"./getAdvice":"js/getAdvice.js","./setCalendar":"js/setCalendar.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

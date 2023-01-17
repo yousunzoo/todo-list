@@ -7,10 +7,7 @@ window.onload = async function () {
   await getAdvice();
   const todos = await readTodos();
   renderTodo(todos);
-  loader.style.display = "none";
 };
-
-// const todos = await readTodos();
 
 const headers = {
   "content-type": "application/json",
@@ -96,19 +93,22 @@ async function editTodos(todo) {
 const addBtn = document.querySelector(".btn--add");
 const modalEl = document.getElementById("modal");
 const modalLayerEl = modalEl.querySelector(".modal-layer");
+const addModal = modalEl.querySelector(".add-todo");
 
-const addTodoInput = modalEl.querySelector(".add-todo").querySelector("input");
-const addTodoBtn = modalEl.querySelector(".btn--add-todo");
+const addTodoInput = addModal.querySelector("input");
+const addTodoBtn = addModal.querySelector(".btn--add-todo");
 
 addBtn.addEventListener("click", function () {
   addTodoInput.value = "";
   addTodoInput.classList?.remove("alert");
+  addModal.style.display = "block";
   modalEl.classList.add("active");
 });
 
 // 모달 레이어 누르면 창 꺼짐
 modalLayerEl.addEventListener("click", function () {
   modalEl.classList.remove("active");
+  addModal.style.display = "none";
 });
 
 // 할 일 추가 모달에서 input 값 없으면 placeholder 색상 바뀜
@@ -125,9 +125,12 @@ addTodoBtn.addEventListener("click", async function (e) {
   const todos = await readTodos();
   renderTodo(todos);
   modalEl.classList.remove("active");
+  addModal.style.display = "none";
 });
 
 function renderTodo(todos) {
+  loader.style.display = "block";
+
   const todoListEl = document.querySelector(".todo-list");
   const todoEls = todos.map((todo) => {
     const todoLi = document.createElement("li");
@@ -168,14 +171,36 @@ function renderTodo(todos) {
     // deleteBtn 누르면 해당 할 일 삭제
     deleteBtn.addEventListener("click", async function () {
       loader.style.display = "block";
-      deleteTodos(todo.id);
+      await deleteTodos(todo.id);
       const todos = await readTodos();
       renderTodo(todos);
-      loader.style.display = "none";
     });
+
+    // editBtn 누르면 모달 창 등장
+    editBtn.addEventListener("click", function () {
+      const editForm = modalEl.querySelector(".edit-todo");
+      const editInput = editForm.querySelector("input");
+      const editBtn = editForm.querySelector("button");
+      editInput.value = todo.title;
+      editForm.style.display = "block";
+      modalEl.classList.add("active");
+
+      editBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        todo.title = editInput.value;
+        await editTodos(todo);
+        const todos = await readTodos();
+        renderTodo(todos);
+        editForm.style.display = "none";
+        modalEl.classList.remove("active");
+      });
+    });
+
     return todoLi;
   });
 
   todoListEl.innerHTML = "";
   todoListEl.append(...todoEls);
+
+  loader.style.display = "none";
 }

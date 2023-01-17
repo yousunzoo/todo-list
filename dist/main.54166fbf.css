@@ -303,12 +303,15 @@ body {
   padding: 40px 60px;
   box-sizing: border-box;
 }
-#modal .modal-container h2 {
+#modal .modal-container form {
+  display: none;
+}
+#modal .modal-container form h2 {
   font-size: 40px;
   text-align: center;
   margin-bottom: 40px;
 }
-#modal .modal-container input {
+#modal .modal-container form input {
   display: block;
   width: 100%;
   border: none;
@@ -319,10 +322,10 @@ body {
   font-size: 30px;
   margin-bottom: 30px;
 }
-#modal .modal-container input.alert::placeholder {
+#modal .modal-container form input.alert::placeholder {
   color: #ff5252;
 }
-#modal .modal-container button {
+#modal .modal-container form button {
   display: block;
   width: 160px;
   margin: auto;
@@ -336,7 +339,7 @@ body {
   font-weight: 700;
   transition: all 0.2s ease-in;
 }
-#modal .modal-container button:hover {
+#modal .modal-container form button:hover {
   color: #039210;
   border-color: #03ac13;
   background-color: transparent;
