@@ -143,8 +143,10 @@ function renderTodo(todos) {
 
     const checkbox = todoLi.querySelector("input");
     const checkLabel = todoLi.querySelector("label");
+    const todoText = todoLi.querySelector("p");
     if (todo.done) {
       checkbox.checked = true;
+      todoText.classList.add("done");
     }
     checkLabel.addEventListener("click", async function (e) {
       e.preventDefault();

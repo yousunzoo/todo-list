@@ -555,8 +555,10 @@ function renderTodo(todos) {
     todoLi.innerHTML = "\n    <input type=\"checkbox\" name=\"done\" id=\"chk_done\" />\n              <label for=\"chk_done\"></label>\n              <p class=\"todo\"><span>".concat(todo.title, "</span></p>\n              <div class=\"btns\">\n                <button class=\"btn--edit\"></button>\n                <button class=\"btn--delete\"></button>\n              </div>\n              ");
     var checkbox = todoLi.querySelector("input");
     var checkLabel = todoLi.querySelector("label");
+    var todoText = todoLi.querySelector("p");
     if (todo.done) {
       checkbox.checked = true;
+      todoText.classList.add("done");
     }
     checkLabel.addEventListener("click", /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {

@@ -3,6 +3,17 @@
   src: url("/font/나눔손글씨\ 세계적인\ 한글.ttf") format("truetype");
   font-weight: normal;
 }
+
+@keyframes stretch {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
 * {
   button {
     border: none;
@@ -187,21 +198,18 @@ body {
         span {
           display: inline-block;
           position: relative;
-          &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            margin: auto;
-            width: 0;
-            height: 2px;
-            background-color: black;
-            transition: width 0.6s ease;
-          }
         }
         &.done > span::after {
           width: 100%;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          margin: auto;
+          height: 2px;
+          background-color: black;
+          animation: stretch 0.6s;
         }
       }
       .btns {
