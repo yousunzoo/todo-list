@@ -7,10 +7,12 @@
 body {
   background-color: #7ebb54;
   font-family: "nanum", sans-serif;
+  width: 100%;
+  height: 100vh;
 }
 
 #wrap {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -135,63 +137,108 @@ body {
         opacity: 0.3;
       }
     }
-    .loading {
-      visibility: hidden;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba(255, 255, 255, 0.5);
-      .loader {
-        position: absolute;
-        top: 100px;
-        left: 0;
-        right: 0;
-        display: block;
-        margin: auto;
-        color: #3d6c36;
-        font-size: 7px;
-        animation-delay: -0.16s;
-      }
-      .loader,
-      .loader:before,
-      .loader:after {
-        border-radius: 50%;
-        width: 2.5em;
-        height: 2.5em;
-        animation-fill-mode: both;
-        animation: bblFadInOut 1.8s infinite ease-in-out;
-      }
-      .loader:before,
-      .loader:after {
-        content: "";
-        position: absolute;
-        top: 0;
-      }
-      .loader:before {
-        left: -3.5em;
-        animation-delay: -0.32s;
-      }
-      .loader:after {
-        left: 3.5em;
-      }
-
-      @keyframes bblFadInOut {
-        0%,
-        80%,
-        100% {
-          box-shadow: 0 2.5em 0 -1.3em;
-        }
-        40% {
-          box-shadow: 0 2.5em 0 0;
-        }
-      }
-    }
   }
 }
 .quotes-container {
   p {
     font-size: 24px;
+  }
+}
+.todo-container {
+  .todo-list {
+    width: 98%;
+    margin: auto;
+    li {
+      display: flex;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+
+      input#chk_done {
+        display: none;
+      }
+      input#chk_done + label {
+        cursor: pointer;
+        height: 30px;
+        margin-right: 10px;
+      }
+      input#chk_done + label::before {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image: url("/images/done.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      input#chk_done:checked + label::before {
+        background-image: url("/images/done-active.png");
+      }
+      p {
+        width: 82%;
+        font-size: 30px;
+        line-height: 30px;
+        span {
+          display: inline-block;
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            width: 0;
+            height: 2px;
+            background-color: black;
+            transition: width 0.6s ease;
+          }
+        }
+        &.done > span::after {
+          width: 100%;
+        }
+      }
+      .btns {
+        display: flex;
+        width: 18%;
+        justify-content: space-between;
+        button {
+          display: block;
+          width: 30px;
+          height: 30px;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background-size: cover;
+          background-position: center;
+        }
+        .edit {
+          background-image: url("/images/edit.png");
+          margin-right: 8px;
+          &:hover {
+            background-image: url("/images/edit-active.gif");
+          }
+        }
+        .delete {
+          background-image: url("/images/trash-bin.png");
+          &:hover {
+            background-image: url("/images/trash-bin-active.gif");
+          }
+        }
+      }
+    }
+  }
+}
+
+.icons_copyright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+  a {
+    text-decoration: none;
   }
 }
