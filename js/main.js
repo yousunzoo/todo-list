@@ -1,12 +1,13 @@
 import getAdvice from "./getAdvice";
 import InitCalandar from "./setCalendar";
 
+const loader = document.querySelector(".loader-container");
 window.onload = async function () {
   await InitCalandar();
   await getAdvice();
-
   const todos = await readTodos();
   renderTodo(todos);
+  loader.style.display = "none";
 };
 
 // const todos = await readTodos();
@@ -139,7 +140,7 @@ function renderTodo(todos) {
                 <button class="btn--edit"></button>
                 <button class="btn--delete"></button>
               </div>
-              `;
+    `;
 
     const checkbox = todoLi.querySelector("input");
     const checkLabel = todoLi.querySelector("label");
