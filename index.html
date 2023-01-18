@@ -18,6 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="/css/main.scss" />
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <script type="module" defer src="/js/selectOption.js"></script>
     <script type="module" defer src="/js/main.js"></script>
     <title>투두 리스트</title>
   </head>
@@ -68,24 +69,20 @@
         <div class="todo-container">
           <div class="select-buttons">
             <div class="categories">
-              <div class="view-todos">
-                <div class="view-select select-box">
-                  <button class="select-label">보기</button>
-                  <ul class="select-option-list">
-                    <li class="option-item">모두 보기</li>
-                    <li class="option-item">완료한 일</li>
-                    <li class="option-item">해야할 일</li>
-                  </ul>
-                </div>
+              <div class="view-select select-box">
+                <button class="select-label">보기</button>
+                <ul class="select-option-list">
+                  <li class="option-item">모두 보기</li>
+                  <li class="option-item">완료한 일</li>
+                  <li class="option-item">해야할 일</li>
+                </ul>
               </div>
-              <div class="sort-todos">
-                <div class="sort-select select-box">
-                  <button class="select-label">정렬</button>
-                  <ul class="select-option-list">
-                    <li class="option-item">최신 순</li>
-                    <li class="option-item">오래된 순</li>
-                  </ul>
-                </div>
+              <div class="sort-select select-box">
+                <button class="select-label">정렬</button>
+                <ul class="select-option-list">
+                  <li class="option-item">최신 순</li>
+                  <li class="option-item">오래된 순</li>
+                </ul>
               </div>
             </div>
             <button class="delete-all-btn">모두 삭제</button>

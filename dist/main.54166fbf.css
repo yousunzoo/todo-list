@@ -260,17 +260,19 @@ body {
 }
 .todo-container .select-buttons .categories .select-box {
   position: relative;
-  width: 80px;
+  width: 100px;
   height: 30px;
   box-sizing: border-box;
   cursor: pointer;
   font-size: 16px;
+  background: url("/arrow.dd9de399.png") calc(100% - 7px) center no-repeat;
+  background-size: 14px;
 }
 .todo-container .select-buttons .categories .select-box .select-label {
-  border: 3px solid lightgreen;
+  border: 3px solid #8ec96d;
   border-radius: 4px;
   display: flex;
-  justify-content: center;
+  padding-left: 10px;
   align-items: center;
   font-family: inherit;
   width: 100%;
@@ -283,9 +285,11 @@ body {
   top: 40px;
   left: 0;
   width: 100%;
+  height: 0;
   overflow: hidden;
-  background: lightgreen;
+  background: #8ec96d;
   border-radius: 4px;
+  transition: height 0.3s ease-in;
 }
 .todo-container .select-buttons .categories .select-box .select-option-list .option-item {
   font-size: 16px;
@@ -297,9 +301,13 @@ body {
   border-bottom: none;
 }
 .todo-container .select-buttons .categories .select-box .select-option-list .option-item:hover {
-  background-color: green;
+  color: white;
+  background-color: #57a246;
 }
-.todo-container .select-buttons .categories .view-todos {
+.todo-container .select-buttons .categories .select-box.active .select-option-list {
+  height: auto;
+}
+.todo-container .select-buttons .categories .view-select {
   margin-right: 10px;
 }
 .todo-container .select-buttons .delete-all-btn {

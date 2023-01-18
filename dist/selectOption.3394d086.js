@@ -117,62 +117,46 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
+})({"js/selectOption.js":[function(require,module,exports) {
+// 옵션 선택
+
+var viewSelectEl = document.querySelector(".view-select");
+var sortSelectEl = document.querySelector(".sort-select");
+var viewBtn = viewSelectEl.querySelector("button");
+var sortBtn = sortSelectEl.querySelector("button");
+var viewOptions = viewSelectEl.querySelectorAll(".option-item");
+var sortOptions = sortSelectEl.querySelectorAll(".option-item");
+
+// 클릭한 옵션의 텍스트를 라벨 안에 넣음
+function handleViewSelect(item) {
+  viewSelectEl.classList.remove("active");
+  viewBtn.innerText = item.textContent;
 }
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-  return '/';
+function handleSortSelect(item) {
+  sortSelectEl.classList.remove("active");
+  sortBtn.innerText = item.textContent;
 }
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-    cssTimeout = null;
-  }, 50);
-}
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done.png":[["done.c7882000.png","images/done.png"],"images/done.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done-active.png":[["done-active.8e5bbda6.png","images/done-active.png"],"images/done-active.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit.png":[["edit.4c82a68f.png","images/edit.png"],"images/edit.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit-active.gif":[["edit-active.c8aeefcf.gif","images/edit-active.gif"],"images/edit-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin.png":[["trash-bin.3b0837f9.png","images/trash-bin.png"],"images/trash-bin.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin-active.gif":[["trash-bin-active.6ab3fd84.gif","images/trash-bin-active.gif"],"images/trash-bin-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\arrow.png":[["arrow.dd9de399.png","images/arrow.png"],"images/arrow.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+// 옵션 클릭 시 클릭한 옵션을 넘김
+viewOptions.forEach(function (option) {
+  option.addEventListener("click", function () {
+    return handleViewSelect(option);
+  });
+});
+sortOptions.forEach(function (option) {
+  option.addEventListener("click", function () {
+    return handleSortSelect(option);
+  });
+});
+
+// 버튼 클릭 시 옵션 목록이 열림/닫힘
+viewBtn.addEventListener("click", function () {
+  viewSelectEl.classList.contains("active") ? viewSelectEl.classList.remove("active") : viewSelectEl.classList.add("active");
+});
+sortBtn.addEventListener("click", function () {
+  sortSelectEl.classList.contains("active") ? sortSelectEl.classList.remove("active") : sortSelectEl.classList.add("active");
+});
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -341,5 +325,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.54166fbf.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/selectOption.js"], null)
+//# sourceMappingURL=/selectOption.3394d086.js.map
