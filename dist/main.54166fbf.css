@@ -151,8 +151,9 @@ body {
 }
 .todo-container .todo-list {
   width: 100%;
-  height: 370px;
+  height: 312px;
   margin: auto;
+  padding-right: 12px;
   overflow-y: auto;
 }
 .todo-container .todo-list li {
@@ -240,14 +241,80 @@ body {
   background-image: url("/trash-bin-active.6ab3fd84.gif");
 }
 .todo-container .todo-list::-webkit-scrollbar {
-  width: 30px;
+  width: 8px;
   box-sizing: border-box;
 }
 .todo-container .todo-list::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  border: 12px solid transparent;
   background-color: #73b730;
   background-clip: padding-box;
+}
+.todo-container .select-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.todo-container .select-buttons .categories {
+  display: flex;
+  margin-bottom: 20px;
+}
+.todo-container .select-buttons .categories .select-box {
+  position: relative;
+  width: 80px;
+  height: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+}
+.todo-container .select-buttons .categories .select-box .select-label {
+  border: 3px solid lightgreen;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  font-size: inherit;
+}
+.todo-container .select-buttons .categories .select-box .select-option-list {
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: lightgreen;
+  border-radius: 4px;
+}
+.todo-container .select-buttons .categories .select-box .select-option-list .option-item {
+  font-size: 16px;
+  border-bottom: 1px dashed green;
+  padding: 6px 10px;
+  transition: all 0.1s ease;
+}
+.todo-container .select-buttons .categories .select-box .select-option-list .option-item:last-child {
+  border-bottom: none;
+}
+.todo-container .select-buttons .categories .select-box .select-option-list .option-item:hover {
+  background-color: green;
+}
+.todo-container .select-buttons .categories .view-todos {
+  margin-right: 10px;
+}
+.todo-container .select-buttons .delete-all-btn {
+  display: flex;
+  width: 100px;
+  height: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  background-color: #e66457;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
 }
 
 .btn--add {

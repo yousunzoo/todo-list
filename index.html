@@ -66,6 +66,30 @@
       <div class="right-page">
         <h2>To Do List</h2>
         <div class="todo-container">
+          <div class="select-buttons">
+            <div class="categories">
+              <div class="view-todos">
+                <div class="view-select select-box">
+                  <button class="select-label">보기</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">모두 보기</li>
+                    <li class="option-item">완료한 일</li>
+                    <li class="option-item">해야할 일</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sort-todos">
+                <div class="sort-select select-box">
+                  <button class="select-label">정렬</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">최신 순</li>
+                    <li class="option-item">오래된 순</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button class="delete-all-btn">모두 삭제</button>
+          </div>
           <ul class="todo-list"></ul>
           <div class="loader-container">
             <span class="loader"></span>
@@ -76,6 +100,10 @@
           <span class="material-symbols-outlined"> add </span>
         </button>
       </div>
+    </div>
+    <div id="modal">
+      <div class="modal-layer"></div>
+      <div class="modal-container"></div>
     </div>
     <div class="icons_copyright">
       <a
@@ -93,10 +121,6 @@
         >Trash Can</a
       >
       icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-    </div>
-    <div id="modal">
-      <div class="modal-layer"></div>
-      <div class="modal-container"></div>
     </div>
   </body>
 </html>
