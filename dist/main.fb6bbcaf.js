@@ -624,11 +624,6 @@ window.onload = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime
     }
   }, _callee);
 }));
-var headers = {
-  "content-type": "application/json",
-  apikey: "FcKdtJs202301",
-  username: "KDT4_YooSeonJu"
-};
 
 // 버튼 누르면 모달창 등장
 var addBtn = document.querySelector(".btn--add");

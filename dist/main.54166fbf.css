@@ -289,7 +289,7 @@ body {
   overflow: hidden;
   background: #8ec96d;
   border-radius: 4px;
-  transition: height 0.3s ease-in;
+  transition: height 0.2s ease-in;
 }
 .todo-container .select-buttons .categories .select-box .select-option-list .option-item {
   font-size: 16px;
@@ -304,8 +304,11 @@ body {
   color: white;
   background-color: #57a246;
 }
-.todo-container .select-buttons .categories .select-box.active .select-option-list {
-  height: auto;
+.todo-container .select-buttons .categories .select-box.view-select.active .select-option-list {
+  height: 86px;
+}
+.todo-container .select-buttons .categories .select-box.sort-select.active .select-option-list {
+  height: 58px;
 }
 .todo-container .select-buttons .categories .view-select {
   margin-right: 10px;

@@ -10,12 +10,6 @@ window.onload = async function () {
   renderTodo(todos);
 };
 
-const headers = {
-  "content-type": "application/json",
-  apikey: "FcKdtJs202301",
-  username: "KDT4_YooSeonJu",
-};
-
 // 버튼 누르면 모달창 등장
 const addBtn = document.querySelector(".btn--add");
 const modalEl = document.getElementById("modal");
