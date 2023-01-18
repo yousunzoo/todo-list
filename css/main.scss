@@ -82,14 +82,17 @@ body {
 }
 
 .calendar-container {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   .select-month {
     display: flex;
+    width: 350px;
+    margin: auto;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     h3 {
       font-size: 24px;
+      font-weight: 700;
     }
     button {
       width: 24px;
@@ -315,15 +318,14 @@ body {
     height: 300px;
     border-radius: 40px;
     background-color: #fff;
-    padding: 40px 60px;
+    padding: 50px 60px;
     box-sizing: border-box;
 
     form {
-      display: none;
       h2 {
-        font-size: 40px;
+        font-size: 36px;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
       }
       input {
         display: block;
@@ -331,10 +333,16 @@ body {
         border: none;
         border-bottom: 1px solid #58575a;
         padding: 10px;
+        box-sizing: border-box;
         text-align: center;
         font-family: inherit;
         font-size: 30px;
         margin-bottom: 30px;
+        color: #aaa;
+        &:focus {
+          outline: none;
+          color: #333;
+        }
         &.alert::placeholder {
           color: #ff5252;
         }

@@ -494,21 +494,28 @@ function _editTodos() {
 var addBtn = document.querySelector(".btn--add");
 var modalEl = document.getElementById("modal");
 var modalLayerEl = modalEl.querySelector(".modal-layer");
-var addModal = modalEl.querySelector(".add-todo");
+var modalContainer = modalEl.querySelector(".modal-container");
+var addModal = document.createElement("form");
+var editModal = document.createElement("form");
+addModal.innerHTML = "<h2>\uD560 \uC77C \uCD94\uAC00</h2>\n<input type=\"text\" placeholder=\"\uCD94\uAC00\uD560 \uD560 \uC77C\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694\" />\n<button class=\"btn--add-todo\">\uCD94\uAC00</button>";
+addModal.classList.add("add-todo");
+editModal.innerHTML = " <h2>\uD560 \uC77C \uC218\uC815</h2>\n<input type=\"text\" />\n<button class=\"btn--edit-todo\">\uC218\uC815</button>";
+editModal.classList.add("edit-todo");
 var addTodoInput = addModal.querySelector("input");
 var addTodoBtn = addModal.querySelector(".btn--add-todo");
 addBtn.addEventListener("click", function () {
   var _addTodoInput$classLi;
+  console.log("clicked");
   addTodoInput.value = "";
   (_addTodoInput$classLi = addTodoInput.classList) === null || _addTodoInput$classLi === void 0 ? void 0 : _addTodoInput$classLi.remove("alert");
-  addModal.style.display = "block";
+  modalContainer.append(addModal);
   modalEl.classList.add("active");
 });
 
 // 모달 레이어 누르면 창 꺼짐
 modalLayerEl.addEventListener("click", function () {
   modalEl.classList.remove("active");
-  addModal.style.display = "none";
+  modalContainer.innerHTML = "";
 });
 
 // 할 일 추가 모달에서 input 값 없으면 placeholder 색상 바뀜
@@ -537,8 +544,8 @@ addTodoBtn.addEventListener("click", /*#__PURE__*/function () {
         case 9:
           todos = _context2.sent;
           renderTodo(todos);
+          modalContainer.innerHTML = "";
           modalEl.classList.remove("active");
-          addModal.style.display = "none";
         case 13:
         case "end":
           return _context2.stop();
@@ -614,20 +621,19 @@ function renderTodo(todos) {
 
     // editBtn 누르면 모달 창 등장
     editBtn.addEventListener("click", function () {
-      var editForm = modalEl.querySelector(".edit-todo");
-      var editInput = editForm.querySelector("input");
-      var editBtn = editForm.querySelector("button");
-      editInput.value = todo.title;
-      editForm.style.display = "block";
+      var editModalInput = editModal.querySelector("input");
+      var editModalBtn = editModal.querySelector("button");
+      editModalInput.value = todo.title;
+      modalContainer.append(editModal);
       modalEl.classList.add("active");
-      editBtn.addEventListener("click", /*#__PURE__*/function () {
+      editModalBtn.addEventListener("click", /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
           var todos;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
                 e.preventDefault();
-                todo.title = editInput.value;
+                todo.title = editModalInput.value;
                 _context5.next = 4;
                 return editTodos(todo);
               case 4:
@@ -636,7 +642,7 @@ function renderTodo(todos) {
               case 6:
                 todos = _context5.sent;
                 renderTodo(todos);
-                editForm.style.display = "none";
+                modalContainer.innerHTML = "";
                 modalEl.classList.remove("active");
               case 10:
               case "end":

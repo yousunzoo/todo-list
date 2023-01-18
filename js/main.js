@@ -93,22 +93,34 @@ async function editTodos(todo) {
 const addBtn = document.querySelector(".btn--add");
 const modalEl = document.getElementById("modal");
 const modalLayerEl = modalEl.querySelector(".modal-layer");
-const addModal = modalEl.querySelector(".add-todo");
+const modalContainer = modalEl.querySelector(".modal-container");
+const addModal = document.createElement("form");
+const editModal = document.createElement("form");
+
+addModal.innerHTML = `<h2>할 일 추가</h2>
+<input type="text" placeholder="추가할 할 일을 입력해주세요" />
+<button class="btn--add-todo">추가</button>`;
+addModal.classList.add("add-todo");
+editModal.innerHTML = ` <h2>할 일 수정</h2>
+<input type="text" />
+<button class="btn--edit-todo">수정</button>`;
+editModal.classList.add("edit-todo");
 
 const addTodoInput = addModal.querySelector("input");
 const addTodoBtn = addModal.querySelector(".btn--add-todo");
 
 addBtn.addEventListener("click", function () {
+  console.log("clicked");
   addTodoInput.value = "";
   addTodoInput.classList?.remove("alert");
-  addModal.style.display = "block";
+  modalContainer.append(addModal);
   modalEl.classList.add("active");
 });
 
 // 모달 레이어 누르면 창 꺼짐
 modalLayerEl.addEventListener("click", function () {
   modalEl.classList.remove("active");
-  addModal.style.display = "none";
+  modalContainer.innerHTML = "";
 });
 
 // 할 일 추가 모달에서 input 값 없으면 placeholder 색상 바뀜
@@ -124,8 +136,8 @@ addTodoBtn.addEventListener("click", async function (e) {
   await createTodo(todoTitle);
   const todos = await readTodos();
   renderTodo(todos);
+  modalContainer.innerHTML = "";
   modalEl.classList.remove("active");
-  addModal.style.display = "none";
 });
 
 function renderTodo(todos) {
@@ -178,20 +190,19 @@ function renderTodo(todos) {
 
     // editBtn 누르면 모달 창 등장
     editBtn.addEventListener("click", function () {
-      const editForm = modalEl.querySelector(".edit-todo");
-      const editInput = editForm.querySelector("input");
-      const editBtn = editForm.querySelector("button");
-      editInput.value = todo.title;
-      editForm.style.display = "block";
+      const editModalInput = editModal.querySelector("input");
+      const editModalBtn = editModal.querySelector("button");
+      editModalInput.value = todo.title;
+      modalContainer.append(editModal);
       modalEl.classList.add("active");
 
-      editBtn.addEventListener("click", async function (e) {
+      editModalBtn.addEventListener("click", async function (e) {
         e.preventDefault();
-        todo.title = editInput.value;
+        todo.title = editModalInput.value;
         await editTodos(todo);
         const todos = await readTodos();
         renderTodo(todos);
-        editForm.style.display = "none";
+        modalContainer.innerHTML = "";
         modalEl.classList.remove("active");
       });
     });
