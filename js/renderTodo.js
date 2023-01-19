@@ -1,4 +1,4 @@
-import { readTodos, deleteTodos, editTodos } from "./operateTodos";
+import { readTodos, deleteTodos, editTodos } from "./api";
 
 const noTodosEl = document.querySelector(".no-todos");
 const loader = document.querySelector(".loader-container");
@@ -11,17 +11,7 @@ editModal.innerHTML = ` <h2>할 일 수정</h2>
 editModal.classList.add("edit-todo");
 
 export default function renderTodo(todos) {
-  const view = document.querySelector(".view-select").querySelector("button");
-  const sort = document.querySelector(".sort-select").querySelector("button");
-  todos.length === 0
-    ? (noTodosEl.style.display = "flex")
-    : (noTodosEl.style.display = "none");
-  if (view.textContent === "완료한 일")
-    todos = todos.filter((item) => item.done);
-  if (view.textContent === "해야할 일")
-    todos = todos.filter((item) => !item.done);
-  if (sort.textContent === "오래된 순") todos = todos.reverse();
-
+  todos = sortTodos(todos);
   loader.style.display = "block";
 
   const todoListEl = document.querySelector(".todo-list");
@@ -36,7 +26,7 @@ export default function renderTodo(todos) {
                 <button class="btn--delete"></button>
               </div>
     `;
-
+    todoLi.dataset.id = todo.id;
     const checkbox = todoLi.querySelector("input");
     const checkLabel = todoLi.querySelector("label");
     const todoText = todoLi.querySelector("p");
@@ -96,4 +86,28 @@ export default function renderTodo(todos) {
   todoListEl.innerHTML = "";
   todoListEl.append(...todoEls);
   loader.style.display = "none";
+}
+
+function sortTodos(todos) {
+  const view = document
+    .querySelector(".view-select")
+    .querySelector("button").textContent;
+  const sort = document
+    .querySelector(".sort-select")
+    .querySelector("button").textContent;
+  todos.length === 0
+    ? (noTodosEl.style.display = "flex")
+    : (noTodosEl.style.display = "none");
+  if (view === "완료한 일") todos = todos.filter((item) => item.done);
+  if (view === "해야할 일") todos = todos.filter((item) => !item.done);
+  todos = todos.sort((a, b) => {
+    const aDate = new Date(a.createdAt);
+    const bDate = new Date(b.createdAt);
+    const aOrder = a.order;
+    const bOrder = b.order;
+    if (sort === "오래된 순") return aDate - bDate;
+    if (sort === "사용자 지정 순") return aOrder - bOrder;
+    return bDate - aDate;
+  });
+  return todos;
 }

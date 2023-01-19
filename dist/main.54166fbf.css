@@ -141,8 +141,8 @@ body {
 
 .advice-container p {
   margin-top: -10px;
-  font-size: 22px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.4;
 }
 
 .todo-container {
@@ -151,7 +151,7 @@ body {
 }
 .todo-container .todo-list {
   width: 100%;
-  height: 300px;
+  height: 400px;
   margin: auto;
   margin-bottom: 20px;
   padding-right: 12px;
@@ -196,6 +196,7 @@ body {
 .todo-container .todo-list li p {
   width: 82%;
   line-height: 30px;
+  cursor: grab;
 }
 .todo-container .todo-list li p span {
   font-size: 22px;
@@ -267,7 +268,6 @@ body {
 }
 .todo-container .select-buttons .categories .select-box {
   position: relative;
-  width: 100px;
   height: 30px;
   box-sizing: border-box;
   cursor: pointer;
@@ -311,14 +311,15 @@ body {
   color: white;
   background-color: #57a246;
 }
-.todo-container .select-buttons .categories .select-box.view-select.active .select-option-list {
-  height: 86px;
+.todo-container .select-buttons .categories .select-box.active .select-option-list {
+  height: 90px;
 }
-.todo-container .select-buttons .categories .select-box.sort-select.active .select-option-list {
-  height: 58px;
+.todo-container .select-buttons .categories .sort-select {
+  width: 130px;
 }
 .todo-container .select-buttons .categories .view-select {
   margin-right: 10px;
+  width: 100px;
 }
 .todo-container .select-buttons .delete-all-btn {
   display: flex;
@@ -502,7 +503,7 @@ body {
   background-color: #fff;
 }
 .loader-container .loader {
-  color: #039210;
+  color: #73b730;
   font-size: 10px;
   width: 1em;
   height: 1em;

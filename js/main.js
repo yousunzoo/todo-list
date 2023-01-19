@@ -1,7 +1,7 @@
 import getAdvice from "./getAdvice";
 import InitCalandar from "./setCalendar";
 import renderTodo from "./renderTodo";
-import { createTodo, readTodos } from "./operateTodos";
+import { createTodo, readTodos, reorderTodos } from "./api";
 import initSelectOptions from "./selectOption";
 import Sortable from "sortablejs";
 
@@ -63,4 +63,14 @@ const todoListEl = document.querySelector(".todo-list");
 Sortable.create(todoListEl, {
   animation: 150,
   ghostClass: "ghost",
+  onEnd: todoListReorder,
 });
+
+async function todoListReorder() {
+  const orderArr = [];
+  const todoLiEls = todoListEl.querySelectorAll("li");
+  todoLiEls.forEach((item) => {
+    orderArr.push(item.dataset.id);
+  });
+  await reorderTodos(orderArr);
+}

@@ -1,4 +1,4 @@
-import { deleteTodos, readTodos } from "./operateTodos";
+import { deleteTodos, readTodos } from "./api";
 import renderTodo from "./renderTodo";
 
 // 옵션 선택
