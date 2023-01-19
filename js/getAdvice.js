@@ -8,7 +8,11 @@ async function getAdvice() {
 }
 
 function setAdvice(advice) {
+  const loader = document
+    .querySelector(".advice-container")
+    .querySelector(".loader");
   const advicesEl = document.querySelector(".advice");
+  loader.style.display = "none";
   advicesEl.textContent = advice;
 }
 

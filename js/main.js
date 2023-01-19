@@ -5,15 +5,7 @@ import { createTodo, readTodos, reorderTodos } from "./api";
 import initSelectOptions from "./selectOption";
 import Sortable from "sortablejs";
 
-window.onload = async function () {
-  await InitCalandar();
-  await getAdvice();
-  const todos = await readTodos();
-  renderTodo(todos);
-  initSelectOptions();
-};
-
-// 버튼 누르면 모달창 등장
+// variables
 const addBtn = document.querySelector(".btn--add");
 const modalEl = document.getElementById("modal");
 const modalLayerEl = modalEl.querySelector(".modal-layer");
@@ -28,11 +20,22 @@ addModal.classList.add("add-todo");
 const addTodoInput = addModal.querySelector("input");
 const addTodoBtn = addModal.querySelector(".btn--add-todo");
 
+// 창 load 되면 캘린더/조언/투두리스트 실행
+window.onload = async function () {
+  await InitCalandar();
+  await getAdvice();
+  const todos = await readTodos();
+  renderTodo(todos);
+  initSelectOptions();
+};
+
+// 추가 버튼 누르면 모달창 등장
 addBtn.addEventListener("click", function () {
   addTodoInput.value = "";
   addTodoInput.classList?.remove("alert");
   modalContainer.append(addModal);
   modalEl.classList.add("active");
+  addTodoInput.focus();
 });
 
 // 모달 레이어 누르면 창 꺼짐
