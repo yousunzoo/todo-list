@@ -2,12 +2,14 @@ import getAdvice from "./getAdvice";
 import InitCalandar from "./setCalendar";
 import renderTodo from "./renderTodo";
 import { createTodo, readTodos } from "./operateTodos";
+import initSelectOptions from "./selectOption";
 
 window.onload = async function () {
   await InitCalandar();
   await getAdvice();
   const todos = await readTodos();
   renderTodo(todos);
+  initSelectOptions();
 };
 
 // 버튼 누르면 모달창 등장

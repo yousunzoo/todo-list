@@ -10,6 +10,15 @@ editModal.innerHTML = ` <h2>할 일 수정</h2>
 editModal.classList.add("edit-todo");
 
 export default function renderTodo(todos) {
+  const view = document.querySelector(".view-select").querySelector("button");
+  const sort = document.querySelector(".sort-select").querySelector("button");
+
+  if (view.textContent === "완료한 일")
+    todos = todos.filter((item) => item.done);
+  if (view.textContent === "해야할 일")
+    todos = todos.filter((item) => !item.done);
+  if (sort.textContent === "오래된 순") todos = todos.reverse();
+
   loader.style.display = "block";
 
   const todoListEl = document.querySelector(".todo-list");

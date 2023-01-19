@@ -191,7 +191,7 @@ body {
         width: 82%;
         line-height: 30px;
         span {
-          font-size: 24px;
+          font-size: 22px;
           display: inline-block;
           position: relative;
           &::after {
@@ -256,10 +256,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 30px;
 
     .categories {
       display: flex;
-      margin-bottom: 20px;
 
       .select-box {
         position: relative;
@@ -343,13 +343,13 @@ body {
 
 .btn--add {
   position: absolute;
-  bottom: 50px;
-  right: 50px;
+  top: 35px;
+  right: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border: none;
   background-color: #03ac13;
   border-radius: 100%;

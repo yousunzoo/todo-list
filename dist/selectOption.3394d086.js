@@ -303,6 +303,14 @@ var editModal = document.createElement("form");
 editModal.innerHTML = " <h2>\uD560 \uC77C \uC218\uC815</h2>\n<input type=\"text\" />\n<button class=\"btn--edit-todo\">\uC218\uC815</button>";
 editModal.classList.add("edit-todo");
 function renderTodo(todos) {
+  var view = document.querySelector(".view-select").querySelector("button");
+  if (view.textContent === "완료한 일") todos = todos.filter(function (item) {
+    return item.done;
+  });
+  if (view.textContent === "해야할 일") todos = todos.filter(function (item) {
+    return !item.done;
+  });
+  console.log(view.textContent, todos);
   loader.style.display = "block";
   var todoListEl = document.querySelector(".todo-list");
   var todoEls = todos.map(function (todo) {
@@ -417,6 +425,10 @@ function renderTodo(todos) {
 },{"./operateTodos":"js/operateTodos.js"}],"js/selectOption.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = initSelectOptions;
 var _operateTodos = require("./operateTodos");
 var _renderTodo = _interopRequireDefault(require("./renderTodo"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -439,123 +451,135 @@ deleteAllModal.innerHTML = " <h2>\uC815\uB9D0\uB85C \uBAA8\uB450 \uC0AD\uC81C\uD
 deleteAllModal.classList.add("deleteAll-todo");
 var loader = document.querySelector(".loader-container");
 // 클릭한 옵션의 텍스트를 라벨 안에 넣음
-function handleViewSelect(item) {
-  viewSelectEl.classList.remove("active");
-  viewBtn.innerText = item.textContent;
-}
-function handleSortSelect(item) {
-  sortSelectEl.classList.remove("active");
-  sortBtn.innerText = item.textContent;
-}
+function initSelectOptions() {
+  function handleViewSelect(item) {
+    viewSelectEl.classList.remove("active");
+    viewBtn.innerText = item.textContent;
+  }
+  function handleSortSelect(item) {
+    sortSelectEl.classList.remove("active");
+    sortBtn.innerText = item.textContent;
+  }
 
-// 옵션 클릭 시 클릭한 옵션을 넘김
-viewOptions.forEach(function (option) {
-  option.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var view, todos;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
-        case 0:
-          handleViewSelect(option);
-          view = option.textContent;
-          _context.next = 4;
-          return (0, _operateTodos.readTodos)();
-        case 4:
-          todos = _context.sent;
-          if (view === "모두 보기") {
-            (0, _renderTodo.default)(todos);
-          }
-          if (view === "완료한 일") {
-            (0, _renderTodo.default)(todos.filter(function (v) {
-              return v.done;
-            }));
-          }
-          if (view === "해야할 일") {
-            (0, _renderTodo.default)(todos.filter(function (v) {
-              return !v.done;
-            }));
-          }
-        case 8:
-        case "end":
-          return _context.stop();
-      }
-    }, _callee);
-  })));
-});
-sortOptions.forEach(function (option) {
-  option.addEventListener("click", function () {
-    return handleSortSelect(option);
+  // 옵션 클릭 시 클릭한 옵션을 넘김
+  viewOptions.forEach(function (option) {
+    option.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var view, todos;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            handleViewSelect(option);
+            console.log("clicked");
+            view = option.textContent;
+            _context.next = 5;
+            return (0, _operateTodos.readTodos)();
+          case 5:
+            todos = _context.sent;
+            if (view === "모두 보기") {
+              (0, _renderTodo.default)(todos);
+            }
+            if (view === "완료한 일") {
+              (0, _renderTodo.default)(todos.filter(function (v) {
+                return v.done;
+              }));
+            }
+            if (view === "해야할 일") {
+              console.log(view);
+              (0, _renderTodo.default)(todos.filter(function (v) {
+                return !v.done;
+              }));
+            }
+          case 9:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    })));
   });
-});
+  sortOptions.forEach(function (option) {
+    option.addEventListener("click", function () {
+      return handleSortSelect(option);
+    });
+  });
 
-// 버튼 클릭 시 옵션 목록이 열림/닫힘
-viewBtn.addEventListener("click", function () {
-  viewSelectEl.classList.contains("active") ? viewSelectEl.classList.remove("active") : viewSelectEl.classList.add("active");
-});
-sortBtn.addEventListener("click", function () {
-  sortSelectEl.classList.contains("active") ? sortSelectEl.classList.remove("active") : sortSelectEl.classList.add("active");
-});
+  // 버튼에 포커스 잡힐 시 옵션 목록이 열림/닫힘
+  viewBtn.addEventListener("focus", function () {
+    viewSelectEl.classList.contains("active") ? viewSelectEl.classList.remove("active") : viewSelectEl.classList.add("active");
+  });
+  sortBtn.addEventListener("focus", function () {
+    sortSelectEl.classList.contains("active") ? sortSelectEl.classList.remove("active") : sortSelectEl.classList.add("active");
+  });
 
-// 모두 삭제 버튼 클릭 시 API에서 값 모두 삭제 및 인터페이스에서 삭제
-deleteAllBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-  var modalBtns;
-  return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-    while (1) switch (_context2.prev = _context2.next) {
-      case 0:
-        modalContainer.append(deleteAllModal);
-        modalEl.classList.add("active");
-        modalBtns = deleteAllModal.querySelectorAll("button");
-        modalBtns.forEach(function (btn) {
-          btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (btn.textContent === "예") deleteAllTodos();
-            modalContainer.innerHTML = "";
-            modalEl.classList.remove("active");
-          });
-        });
-      case 4:
-      case "end":
-        return _context2.stop();
-    }
-  }, _callee2);
-})));
-function deleteAllTodos() {
-  return _deleteAllTodos.apply(this, arguments);
-}
-function _deleteAllTodos() {
-  _deleteAllTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var todos;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+  // 버튼에서 포커스 사라지면 옵션 목록 닫힘
+  viewBtn.addEventListener("focusout", function () {
+    viewSelectEl.classList.remove("active");
+  });
+  sortBtn.addEventListener("focusout", function () {
+    sortSelectEl.classList.remove("active");
+  });
+
+  // 모두 삭제 버튼 클릭 시 API에서 값 모두 삭제 및 인터페이스에서 삭제
+  deleteAllBtn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var modalBtns;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          loader.style.display = "block";
-          _context4.next = 3;
-          return (0, _operateTodos.readTodos)();
-        case 3:
-          todos = _context4.sent;
-          todos.map( /*#__PURE__*/function () {
-            var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(item) {
-              return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-                while (1) switch (_context3.prev = _context3.next) {
-                  case 0:
-                    (0, _operateTodos.deleteTodos)(item.id);
-                  case 1:
-                  case "end":
-                    return _context3.stop();
-                }
-              }, _callee3);
-            }));
-            return function (_x) {
-              return _ref3.apply(this, arguments);
-            };
-          }());
-          (0, _renderTodo.default)([]);
-        case 6:
+          modalContainer.append(deleteAllModal);
+          modalEl.classList.add("active");
+          modalBtns = deleteAllModal.querySelectorAll("button");
+          modalBtns.forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+              e.preventDefault();
+              if (btn.textContent === "예") deleteAllTodos();
+              modalContainer.innerHTML = "";
+              modalEl.classList.remove("active");
+            });
+          });
+        case 4:
         case "end":
-          return _context4.stop();
+          return _context2.stop();
       }
-    }, _callee4);
-  }));
-  return _deleteAllTodos.apply(this, arguments);
+    }, _callee2);
+  })));
+  function deleteAllTodos() {
+    return _deleteAllTodos.apply(this, arguments);
+  }
+  function _deleteAllTodos() {
+    _deleteAllTodos = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var todos;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            loader.style.display = "block";
+            _context4.next = 3;
+            return (0, _operateTodos.readTodos)();
+          case 3:
+            todos = _context4.sent;
+            todos.map( /*#__PURE__*/function () {
+              var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(item) {
+                return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+                  while (1) switch (_context3.prev = _context3.next) {
+                    case 0:
+                      (0, _operateTodos.deleteTodos)(item.id);
+                    case 1:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }, _callee3);
+              }));
+              return function (_x) {
+                return _ref3.apply(this, arguments);
+              };
+            }());
+            (0, _renderTodo.default)([]);
+          case 6:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4);
+    }));
+    return _deleteAllTodos.apply(this, arguments);
+  }
 }
 },{"./operateTodos":"js/operateTodos.js","./renderTodo":"js/renderTodo.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
