@@ -165,7 +165,12 @@ body {
       &:last-child {
         margin-bottom: 0;
       }
-
+      &.ghost {
+        background-color: #e5ffe9;
+      }
+      &.sortable-drag {
+        opacity: 0;
+      }
       input#chk_done {
         display: none;
       }

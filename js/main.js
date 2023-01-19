@@ -3,6 +3,7 @@ import InitCalandar from "./setCalendar";
 import renderTodo from "./renderTodo";
 import { createTodo, readTodos } from "./operateTodos";
 import initSelectOptions from "./selectOption";
+import Sortable from "sortablejs";
 
 window.onload = async function () {
   await InitCalandar();
@@ -55,4 +56,11 @@ addTodoBtn.addEventListener("click", async function (e) {
   renderTodo(todos);
   modalContainer.innerHTML = "";
   modalEl.classList.remove("active");
+});
+
+// sortableJS
+const todoListEl = document.querySelector(".todo-list");
+Sortable.create(todoListEl, {
+  animation: 150,
+  ghostClass: "ghost",
 });

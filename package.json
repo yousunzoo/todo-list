@@ -22,5 +22,8 @@
     "parcel-plugin-static-files-copy": "^2.6.0",
     "postcss": "^8.4.21",
     "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "sortablejs": "^1.15.0"
   }
 }

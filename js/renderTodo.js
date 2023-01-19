@@ -95,6 +95,5 @@ export default function renderTodo(todos) {
 
   todoListEl.innerHTML = "";
   todoListEl.append(...todoEls);
-
   loader.style.display = "none";
 }

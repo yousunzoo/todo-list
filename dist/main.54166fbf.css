@@ -166,6 +166,12 @@ body {
 .todo-container .todo-list li:last-child {
   margin-bottom: 0;
 }
+.todo-container .todo-list li.ghost {
+  background-color: #e5ffe9;
+}
+.todo-container .todo-list li.sortable-drag {
+  opacity: 0;
+}
 .todo-container .todo-list li input#chk_done {
   display: none;
 }
