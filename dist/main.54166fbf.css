@@ -321,11 +321,18 @@ body {
   cursor: pointer;
   font-size: 16px;
   color: white;
+  border: 3px solid transparent;
   background-color: #e66457;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
   font-family: inherit;
+  transition: all 0.2s ease-in;
+}
+.todo-container .select-buttons .delete-all-btn:hover {
+  border-color: #e66457;
+  color: #e66457;
+  background-color: transparent;
 }
 
 .btn--add {
@@ -396,6 +403,9 @@ body {
   padding: 50px 60px;
   box-sizing: border-box;
 }
+#modal .modal-container form {
+  text-align: center;
+}
 #modal .modal-container form h2 {
   font-size: 36px;
   text-align: center;
@@ -422,7 +432,7 @@ body {
   color: #ff5252;
 }
 #modal .modal-container form button {
-  display: block;
+  display: inline-block;
   width: 160px;
   margin: auto;
   height: 60px;
@@ -439,6 +449,29 @@ body {
   color: #039210;
   border-color: #03ac13;
   background-color: transparent;
+}
+#modal .modal-container .deleteAll-todo h2 {
+  font-size: 28px;
+  color: red;
+  margin-bottom: 50px;
+}
+#modal .modal-container .deleteAll-todo p {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+#modal .modal-container .deleteAll-todo button {
+  margin-right: 20px;
+}
+#modal .modal-container .deleteAll-todo button:last-child {
+  margin-right: 0;
+  background-color: transparent;
+  border-color: #03ac13;
+  color: #03ac13;
+}
+#modal .modal-container .deleteAll-todo button:last-child:hover {
+  background-color: #03ac13;
+  color: white;
 }
 
 .loader-container {

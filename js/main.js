@@ -16,22 +16,16 @@ const modalEl = document.getElementById("modal");
 const modalLayerEl = modalEl.querySelector(".modal-layer");
 const modalContainer = modalEl.querySelector(".modal-container");
 const addModal = document.createElement("form");
-const editModal = document.createElement("form");
 
 addModal.innerHTML = `<h2>할 일 추가</h2>
 <input type="text" placeholder="추가할 할 일을 입력해주세요" />
 <button class="btn--add-todo">추가</button>`;
 addModal.classList.add("add-todo");
-editModal.innerHTML = ` <h2>할 일 수정</h2>
-<input type="text" />
-<button class="btn--edit-todo">수정</button>`;
-editModal.classList.add("edit-todo");
 
 const addTodoInput = addModal.querySelector("input");
 const addTodoBtn = addModal.querySelector(".btn--add-todo");
 
 addBtn.addEventListener("click", function () {
-  console.log("clicked");
   addTodoInput.value = "";
   addTodoInput.classList?.remove("alert");
   modalContainer.append(addModal);

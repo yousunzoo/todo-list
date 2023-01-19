@@ -1,7 +1,15 @@
 import { readTodos, deleteTodos, editTodos } from "./operateTodos";
 
+const loader = document.querySelector(".loader-container");
+const modalEl = document.getElementById("modal");
+const modalContainer = modalEl.querySelector(".modal-container");
+const editModal = document.createElement("form");
+editModal.innerHTML = ` <h2>할 일 수정</h2>
+<input type="text" />
+<button class="btn--edit-todo">수정</button>`;
+editModal.classList.add("edit-todo");
+
 export default function renderTodo(todos) {
-  const loader = document.querySelector(".loader-container");
   loader.style.display = "block";
 
   const todoListEl = document.querySelector(".todo-list");
@@ -39,6 +47,8 @@ export default function renderTodo(todos) {
         ? todoText.classList.add("done")
         : todoText.classList.remove("done");
       await editTodos(todo);
+      const todos = await readTodos();
+      renderTodo(todos);
     });
 
     // deleteBtn 누르면 해당 할 일 삭제
