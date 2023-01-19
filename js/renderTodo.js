@@ -1,5 +1,6 @@
 import { readTodos, deleteTodos, editTodos } from "./operateTodos";
 
+const noTodosEl = document.querySelector(".no-todos");
 const loader = document.querySelector(".loader-container");
 const modalEl = document.getElementById("modal");
 const modalContainer = modalEl.querySelector(".modal-container");
@@ -12,7 +13,9 @@ editModal.classList.add("edit-todo");
 export default function renderTodo(todos) {
   const view = document.querySelector(".view-select").querySelector("button");
   const sort = document.querySelector(".sort-select").querySelector("button");
-
+  todos.length === 0
+    ? (noTodosEl.style.display = "flex")
+    : (noTodosEl.style.display = "none");
   if (view.textContent === "완료한 일")
     todos = todos.filter((item) => item.done);
   if (view.textContent === "해야할 일")

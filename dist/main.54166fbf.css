@@ -151,8 +151,9 @@ body {
 }
 .todo-container .todo-list {
   width: 100%;
-  height: 312px;
+  height: 300px;
   margin: auto;
+  margin-bottom: 20px;
   padding-right: 12px;
   overflow-y: auto;
 }
@@ -472,6 +473,18 @@ body {
 #modal .modal-container .deleteAll-todo button:last-child:hover {
   background-color: #03ac13;
   color: white;
+}
+
+.no-todos {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 360px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader-container {
