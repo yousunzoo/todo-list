@@ -65,40 +65,58 @@
         </div>
       </div>
       <div class="right-page">
-        <h2>To Do List</h2>
-        <div class="todo-container">
-          <div class="select-buttons">
-            <div class="categories">
-              <div class="view-select select-box">
-                <button class="select-label">보기</button>
-                <ul class="select-option-list">
-                  <li class="option-item">모두 보기</li>
-                  <li class="option-item">완료한 일</li>
-                  <li class="option-item">해야할 일</li>
-                </ul>
+        <div class="todos-wrap">
+          <h2>To Do List</h2>
+          <div class="todo-container">
+            <div class="select-buttons">
+              <div class="categories">
+                <div class="view-select select-box">
+                  <button class="select-label">보기</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">모두 보기</li>
+                    <li class="option-item">완료한 일</li>
+                    <li class="option-item">해야할 일</li>
+                  </ul>
+                </div>
+                <div class="sort-select select-box">
+                  <button class="select-label">정렬</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">최신 순</li>
+                    <li class="option-item">오래된 순</li>
+                    <li class="option-item">사용자 지정 순</li>
+                  </ul>
+                </div>
               </div>
-              <div class="sort-select select-box">
-                <button class="select-label">정렬</button>
-                <ul class="select-option-list">
-                  <li class="option-item">최신 순</li>
-                  <li class="option-item">오래된 순</li>
-                  <li class="option-item">사용자 지정 순</li>
-                </ul>
-              </div>
+              <button class="delete-all-btn">모두 삭제</button>
             </div>
-            <button class="delete-all-btn">모두 삭제</button>
+            <ul class="todo-list"></ul>
+            <div class="loader-container">
+              <span class="loader"></span>
+            </div>
+            <div class="no-todos">
+              <p>등록된 일정이 없습니다. 일정을 추가해보세요!</p>
+            </div>
           </div>
-          <ul class="todo-list"></ul>
-          <div class="loader-container">
-            <span class="loader"></span>
+          <button class="btn--add">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </div>
+        <div class="d-day-container">
+          <div class="set-d-day">
+            <p>디데이를 설정해보세요!</p>
+            <button>디데이 추가</button>
           </div>
-          <div class="no-todos">
-            <p>등록된 일정이 없습니다. 일정을 추가해보세요!</p>
+          <div class="show-d-day">
+            <div class="d-day-box">
+              <p>D<span class="d-day">-100</span></p>
+            </div>
+            <div class="d-day-text">
+              <p class="d-day-title">정보처리기사 필기</p>
+              <p class="d-day-date">2023.02.13</p>
+            </div>
+            <button class="edit-d-day"></button>
           </div>
         </div>
-        <button class="btn--add">
-          <span class="material-symbols-outlined"> add </span>
-        </button>
       </div>
     </div>
     <div id="modal">

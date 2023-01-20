@@ -172,7 +172,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done.png":[["done.c7882000.png","images/done.png"],"images/done.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done-active.png":[["done-active.8e5bbda6.png","images/done-active.png"],"images/done-active.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit.png":[["edit.4c82a68f.png","images/edit.png"],"images/edit.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit-active.gif":[["edit-active.c8aeefcf.gif","images/edit-active.gif"],"images/edit-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin.png":[["trash-bin.3b0837f9.png","images/trash-bin.png"],"images/trash-bin.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin-active.gif":[["trash-bin-active.6ab3fd84.gif","images/trash-bin-active.gif"],"images/trash-bin-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\arrow.png":[["arrow.dd9de399.png","images/arrow.png"],"images/arrow.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done.png":[["done.c7882000.png","images/done.png"],"images/done.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done-active.png":[["done-active.8e5bbda6.png","images/done-active.png"],"images/done-active.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit.png":[["edit.4c82a68f.png","images/edit.png"],"images/edit.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit-active.gif":[["edit-active.c8aeefcf.gif","images/edit-active.gif"],"images/edit-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin.png":[["trash-bin.3b0837f9.png","images/trash-bin.png"],"images/trash-bin.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin-active.gif":[["trash-bin-active.6ab3fd84.gif","images/trash-bin-active.gif"],"images/trash-bin-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\arrow.png":[["arrow.dd9de399.png","images/arrow.png"],"images/arrow.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\calendar-icon.png":[["calendar-icon.3fe4ad61.png","images/calendar-icon.png"],"images/calendar-icon.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -197,7 +197,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49688" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51890" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

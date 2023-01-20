@@ -17,7 +17,7 @@ export default function renderTodo(todos) {
   const todoListEl = document.querySelector(".todo-list");
   const todoEls = todos.map((todo) => {
     const todoLi = document.createElement("li");
-    todoLi.innerHTML = `
+    todoLi.innerHTML = /*html*/ `
     <input type="checkbox" name="done" id="chk_done" />
               <label for="chk_done"></label>
               <p class="todo"><span>${todo.title}</span></p>

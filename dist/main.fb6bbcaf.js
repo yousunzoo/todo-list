@@ -514,7 +514,7 @@ function renderTodo(todos) {
   var todoListEl = document.querySelector(".todo-list");
   var todoEls = todos.map(function (todo) {
     var todoLi = document.createElement("li");
-    todoLi.innerHTML = "\n    <input type=\"checkbox\" name=\"done\" id=\"chk_done\" />\n              <label for=\"chk_done\"></label>\n              <p class=\"todo\"><span>".concat(todo.title, "</span></p>\n              <div class=\"btns\">\n                <button class=\"btn--edit\"></button>\n                <button class=\"btn--delete\"></button>\n              </div>\n    ");
+    todoLi.innerHTML = /*html*/"\n    <input type=\"checkbox\" name=\"done\" id=\"chk_done\" />\n              <label for=\"chk_done\"></label>\n              <p class=\"todo\"><span>".concat(todo.title, "</span></p>\n              <div class=\"btns\">\n                <button class=\"btn--edit\"></button>\n                <button class=\"btn--delete\"></button>\n              </div>\n    ");
     todoLi.dataset.id = todo.id;
     var checkbox = todoLi.querySelector("input");
     var checkLabel = todoLi.querySelector("label");
@@ -4238,7 +4238,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49688" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51890" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
