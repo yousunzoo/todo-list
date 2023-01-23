@@ -1,5 +1,5 @@
 import getAdvice from "./getAdvice";
-import InitCalandar from "./setCalendar";
+import InitCalendar from "./setCalendar";
 import renderTodo from "./renderTodo";
 import { createTodo, readTodos, reorderTodos } from "./api";
 import initSelectOptions from "./selectOption";
@@ -23,7 +23,7 @@ const addTodoBtn = addModal.querySelector(".btn--add-todo");
 
 // 창 load 되면 캘린더/조언/투두리스트 실행
 window.onload = async function () {
-  await InitCalandar();
+  await InitCalendar();
   await getAdvice();
   const todos = await readTodos();
   renderTodo(todos);

@@ -19,6 +19,8 @@ export default function initSetDday() {
   // 디데이 추가 버튼 클릭하면 모달 창 등장
   addDdaybtn.addEventListener("click", () => {
     showDdayModal();
+    const dDayName = dDayForm.querySelector(".d-day-name");
+    dDayName.textContent = "";
   });
 
   // edit 버튼 클릭하면 모달 창 등장

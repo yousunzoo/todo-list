@@ -1,4 +1,4 @@
-export default async function InitCalandar() {
+export default async function InitCalendar() {
   const today = new Date();
   let curYear = today.getFullYear();
   let curMonth = today.getMonth();
