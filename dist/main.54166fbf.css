@@ -450,7 +450,7 @@ body {
   color: white;
 }
 .d-day-container .show-d-day {
-  display: flex;
+  display: none;
   align-items: center;
 }
 .d-day-container .show-d-day .d-day-box {
@@ -605,6 +605,16 @@ body {
 #modal .modal-container .deleteAll-todo button:last-child:hover {
   background-color: #03ac13;
   color: white;
+}
+#modal .modal-container .set-d-day {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#modal .modal-container .set-d-day input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 26px;
 }
 
 .no-todos {
