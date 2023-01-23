@@ -1,3 +1,4 @@
+/* variables */
 * button {
   border: none;
   background-color: transparent;
@@ -158,7 +159,7 @@ body {
 }
 .advice-container .loader {
   background-color: #fff;
-  color: green;
+  color: #009a5c;
   font-size: 10px;
   margin: auto;
   position: relative;
@@ -267,7 +268,7 @@ body {
   margin: auto;
   width: 0;
   height: 2px;
-  background-color: black;
+  background-color: #333;
   transition: width 0.6s ease;
 }
 .todos-wrap .todo-container .todo-list li p.done > span::after {
@@ -309,7 +310,7 @@ body {
 }
 .todos-wrap .todo-container .todo-list::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #73b730;
+  background-color: #8ec96d;
   background-clip: padding-box;
 }
 .todos-wrap .todo-container .select-buttons {
@@ -362,7 +363,7 @@ body {
   border-bottom: none;
 }
 .todos-wrap .todo-container .select-buttons .categories .select-box .select-option-list .option-item:hover {
-  color: white;
+  color: #fff;
   background-color: #57a246;
 }
 .todos-wrap .todo-container .select-buttons .categories .select-box.active .select-option-list {
@@ -382,7 +383,7 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   font-size: 16px;
-  color: white;
+  color: #fff;
   border: 3px solid transparent;
   background-color: #e66457;
   border-radius: 4px;
@@ -410,7 +411,7 @@ body {
 }
 .todos-wrap .btn--add span {
   font-size: 40px;
-  color: white;
+  color: #fff;
 }
 .todos-wrap .btn--add:hover {
   box-shadow: inset 6px 6px 12px #039210, inset -6px -6px 12px #03c616;
@@ -420,7 +421,6 @@ body {
   margin-top: 40px;
 }
 .d-day-container .set-d-day {
-  display: flex;
   display: none;
   width: 100%;
   padding: 20px 0;
@@ -439,15 +439,18 @@ body {
   padding: 10px;
   height: 40px;
   font-size: 18px;
-  color: orange;
+  color: #ff9d04;
   font-weight: 700;
-  border: 3px solid orange;
+  border: 3px solid #ff9d04;
   border-radius: 10px;
   transition: all 0.15s ease-in;
 }
 .d-day-container .set-d-day button:hover {
-  background-color: orange;
-  color: white;
+  background-color: #ff9d04;
+  color: #fff;
+}
+.d-day-container .set-d-day.show {
+  display: flex;
 }
 .d-day-container .show-d-day {
   display: none;
@@ -488,6 +491,9 @@ body {
 }
 .d-day-container .show-d-day .edit-d-day:hover {
   background-image: url(/edit-active.c8aeefcf.gif);
+}
+.d-day-container .show-d-day.show {
+  display: flex;
 }
 
 .icons_copyright {
@@ -565,6 +571,9 @@ body {
 #modal .modal-container form input.alert::placeholder {
   color: #ff5252;
 }
+#modal .modal-container form input.alert[type=date] {
+  color: #ff5252;
+}
 #modal .modal-container form button {
   display: inline-block;
   width: 160px;
@@ -574,18 +583,18 @@ body {
   border: 4px solid transparent;
   background-color: #03ac13;
   font-size: 30px;
-  color: white;
+  color: #fff;
   font-weight: 700;
   transition: all 0.2s ease-in;
 }
 #modal .modal-container form button:hover {
-  color: #039210;
+  color: #03ac13;
   border-color: #03ac13;
   background-color: transparent;
 }
 #modal .modal-container .deleteAll-todo h2 {
   font-size: 28px;
-  color: red;
+  color: #ed2a61;
   margin-bottom: 50px;
 }
 #modal .modal-container .deleteAll-todo p {
@@ -604,17 +613,18 @@ body {
 }
 #modal .modal-container .deleteAll-todo button:last-child:hover {
   background-color: #03ac13;
-  color: white;
+  color: #fff;
 }
-#modal .modal-container .set-d-day {
+#modal .modal-container .d-day-modal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-#modal .modal-container .set-d-day input {
+#modal .modal-container .d-day-modal input {
   width: 100%;
   padding: 10px 0;
   font-size: 26px;
+  color: #333;
 }
 
 .no-todos {
@@ -638,7 +648,7 @@ body {
   background-color: #fff;
 }
 .loader-container .loader {
-  color: #73b730;
+  color: #009a5c;
   font-size: 10px;
   width: 1em;
   height: 1em;

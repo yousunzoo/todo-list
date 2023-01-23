@@ -117,62 +117,96 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+})({"js/setDday.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = initSetDday;
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function initSetDday() {
+  var setDdayContainer = document.querySelector(".set-d-day");
+  var dDayContainer = document.querySelector(".show-d-day");
+  var addDdaybtn = setDdayContainer.querySelector("button");
+  var editDdaybtn = dDayContainer.querySelector("button");
+  var modal = document.querySelector("#modal");
+  var modalContainer = modal.querySelector(".modal-container");
+  var dDayModal = document.createElement("form");
+  dDayModal.innerHTML = /*html*/"\n          <input\n            type=\"text\"\n            class=\"d-day-name\"\n            placeholder=\"\uCD94\uAC00\uD560 \uC77C\uC815\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694\" required />\n          <input type=\"date\" class=\"d-day-date\" required />\n          <button>\uC644\uB8CC</button>";
+  dDayModal.classList.add("d-day-modal");
+
+  // 디데이 추가 버튼 클릭하면 모달 창 등장
+  addDdaybtn.addEventListener("click", function () {
+    showDdayModal();
+  });
+
+  // edit 버튼 클릭하면 모달 창 등장
+  editDdaybtn.addEventListener("click", function () {
+    showDdayModal();
+  });
+  function showDdayModal() {
+    modal.classList.add("active");
+    modalContainer.append(dDayModal);
+
+    // form 입력한 값 받아서 디데이 실행
+    var dDayForm = document.querySelector(".d-day-modal");
+    var setDdaybtn = dDayForm.querySelector("button");
+    var dDayName = dDayForm.querySelector(".d-day-name");
+    var dDayDate = dDayForm.querySelector(".d-day-date");
+
+    // localStorage에 값 있으면 들고 오기 (edit)
+    if (localStorage.getItem("d-day")) {
+      var dDayArr = JSON.parse(localStorage.getItem("d-day"));
+      dDayName.value = dDayArr[0];
+      dDayDate.value = dDayArr[1];
     }
+    dDayDate.addEventListener("click", function () {
+      dDayDate.classList.remove("alert");
+    });
+    setDdaybtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (dDayName.value === "") return dDayName.classList.add("alert");
+      if (dDayDate.value === "") return dDayDate.classList.add("alert");
+      var dDayArr = [dDayName.value, dDayDate.value];
+      localStorage.setItem("d-day", JSON.stringify(dDayArr));
+      setDday();
+      modalContainer.innerHTML = "";
+      modal.classList.remove("active");
+    });
   }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
+  function setDday() {
+    var dDayData = JSON.parse(localStorage.getItem("d-day"));
+    var _dDayData = _slicedToArray(dDayData, 2),
+      name = _dDayData[0],
+      date = _dDayData[1];
+    var dDay = dDayContainer.querySelector(".d-day");
+    var dDayTitle = dDayContainer.querySelector(".d-day-title");
+    var dDayDate = dDayContainer.querySelector(".d-day-date");
+    dDayTitle.textContent = name;
+    dDayDate.textContent = date;
+    setDdayContainer.classList.remove("show");
+    dDayContainer.classList.add("show");
+    var calDday = Math.ceil((new Date(date) - new Date()) / (1000 * 60 * 60 * 24));
+    dDay.textContent = calDday < 0 ? "+".concat(-calDday) : "-".concat(calDday);
   }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-    cssTimeout = null;
-  }, 50);
+
+  // 페이지 로드될 때 localStorage에 값 있는지에 따라 동작
+  if (localStorage.getItem("d-day")) {
+    setDdayContainer.classList.remove("show");
+    dDayContainer.classList.add("show");
+    setDday();
+  } else {
+    setDdayContainer.classList.add("show");
+    dDayContainer.classList.remove("show");
+  }
 }
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done.png":[["done.c7882000.png","images/done.png"],"images/done.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done-active.png":[["done-active.8e5bbda6.png","images/done-active.png"],"images/done-active.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit.png":[["edit.4c82a68f.png","images/edit.png"],"images/edit.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit-active.gif":[["edit-active.c8aeefcf.gif","images/edit-active.gif"],"images/edit-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin.png":[["trash-bin.3b0837f9.png","images/trash-bin.png"],"images/trash-bin.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin-active.gif":[["trash-bin-active.6ab3fd84.gif","images/trash-bin-active.gif"],"images/trash-bin-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\arrow.png":[["arrow.dd9de399.png","images/arrow.png"],"images/arrow.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\calendar-icon.png":[["calendar-icon.3fe4ad61.png","images/calendar-icon.png"],"images/calendar-icon.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -341,73 +375,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-  var id = bundles[bundles.length - 1];
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-    throw err;
-  }
-}
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-var bundleLoaders = {};
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-var bundles = {};
-function loadBundle(bundle) {
-  var id;
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-      return resolved;
-    }).catch(function (e) {
-      delete bundles[bundle];
-      throw e;
-    });
-  }
-}
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],0:[function(require,module,exports) {
-var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
-//# sourceMappingURL=/main.54166fbf.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/setDday.js"], null)
+//# sourceMappingURL=/setDday.881f10da.js.map

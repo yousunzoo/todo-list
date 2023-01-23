@@ -168,11 +168,11 @@ function reloadCSS() {
   }, 50);
 }
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/variable.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\today.png":[["today.1a4b5bd2.png","images/today.png"],"images/today.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done.png":[["done.c7882000.png","images/done.png"],"images/done.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\done-active.png":[["done-active.8e5bbda6.png","images/done-active.png"],"images/done-active.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit.png":[["edit.4c82a68f.png","images/edit.png"],"images/edit.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\edit-active.gif":[["edit-active.c8aeefcf.gif","images/edit-active.gif"],"images/edit-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin.png":[["trash-bin.3b0837f9.png","images/trash-bin.png"],"images/trash-bin.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\trash-bin-active.gif":[["trash-bin-active.6ab3fd84.gif","images/trash-bin-active.gif"],"images/trash-bin-active.gif"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\arrow.png":[["arrow.dd9de399.png","images/arrow.png"],"images/arrow.png"],"C:\\Users\\asus\\Documents\\dev\\KDT4-M3\\images\\calendar-icon.png":[["calendar-icon.3fe4ad61.png","images/calendar-icon.png"],"images/calendar-icon.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -341,73 +341,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-  var id = bundles[bundles.length - 1];
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-    throw err;
-  }
-}
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-var bundleLoaders = {};
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-var bundles = {};
-function loadBundle(bundle) {
-  var id;
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-      return resolved;
-    }).catch(function (e) {
-      delete bundles[bundle];
-      throw e;
-    });
-  }
-}
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],0:[function(require,module,exports) {
-var b=require("node_modules/parcel-bundler/src/builtins/bundle-loader.js");
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
-//# sourceMappingURL=/main.54166fbf.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/variable.78458fd5.js.map
