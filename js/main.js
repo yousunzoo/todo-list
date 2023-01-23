@@ -4,6 +4,7 @@ import renderTodo from "./renderTodo";
 import { createTodo, readTodos, reorderTodos } from "./api";
 import initSelectOptions from "./selectOption";
 import Sortable from "sortablejs";
+import initSetDday from "./setDday";
 
 // variables
 const addBtn = document.querySelector(".btn--add");
@@ -27,6 +28,7 @@ window.onload = async function () {
   const todos = await readTodos();
   renderTodo(todos);
   initSelectOptions();
+  initSetDday();
 };
 
 // 추가 버튼 누르면 모달창 등장
