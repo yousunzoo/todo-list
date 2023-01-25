@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <!-- font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css">
+    <!-- reset.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="/main.54166fbf.css">
+    <link rel="shortcut icon" href="/favicon.e533d247.ico" type="image/x-icon">
+
+    <script type="module" defer="" src="/main.fb6bbcaf.js"></script>
+    <title>투두 리스트</title>
+  <script src="/main.54166fbf.js"></script></head>
+  <body>
+    <div id="wrap">
+      <div class="left-page">
+        <div class="calendar-container">
+          <h2>Calendar 📅</h2>
+          <div class="calendar">
+            <div class="select-month">
+              <button class="prev material-symbols-outlined">
+                arrow_back_ios
+              </button>
+              <h3 class="month"></h3>
+              <button class="next material-symbols-outlined">
+                arrow_forward_ios
+              </button>
+            </div>
+            <div class="days-container">
+              <div class="days"></div>
+            </div>
+          </div>
+        </div>
+        <div class="advice-container">
+          <h2>Today's Advice 🍀</h2>
+          <p class="advice"></p>
+          <div class="loader">Loading...</div>
+        </div>
+      </div>
+      <div class="spring">
+        <div class="left-holes">
+          <div class="hole1"></div>
+          <div class="hole2"></div>
+          <div class="hole3"></div>
+        </div>
+        <div class="springs">
+          <div class="spring1"></div>
+          <div class="spring2"></div>
+          <div class="spring3"></div>
+        </div>
+        <div class="right-holes">
+          <div class="hole1"></div>
+          <div class="hole2"></div>
+          <div class="hole3"></div>
+        </div>
+      </div>
+      <div class="right-page">
+        <div class="todos-wrap">
+          <h2>To Do List</h2>
+          <div class="todo-container">
+            <div class="select-buttons">
+              <div class="categories">
+                <div class="view-select select-box">
+                  <button class="select-label">보기</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">모두 보기</li>
+                    <li class="option-item">완료한 일</li>
+                    <li class="option-item">해야할 일</li>
+                  </ul>
+                </div>
+                <div class="sort-select select-box">
+                  <button class="select-label">정렬</button>
+                  <ul class="select-option-list">
+                    <li class="option-item">최신 순</li>
+                    <li class="option-item">오래된 순</li>
+                    <li class="option-item">사용자 지정 순</li>
+                  </ul>
+                </div>
+              </div>
+              <button class="delete-all-btn">모두 삭제</button>
+            </div>
+            <ul class="todo-list"></ul>
+            <div class="loader-container">
+              <span class="loader"></span>
+            </div>
+            <div class="no-todos">
+              <p>등록된 일정이 없습니다. 일정을 추가해보세요!</p>
+            </div>
+          </div>
+          <button class="btn--add">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </div>
+        <div class="d-day-container">
+          <div class="set-d-day">
+            <p>디데이를 설정해보세요!</p>
+            <button>디데이 추가</button>
+          </div>
+          <div class="show-d-day">
+            <div class="d-day-box">
+              <p>D<span class="d-day">-100</span></p>
+            </div>
+            <div class="d-day-text">
+              <p class="d-day-title">정보처리기사 필기</p>
+              <p class="d-day-date">2023.02.13</p>
+            </div>
+            <button class="edit-d-day"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal">
+      <div class="modal-layer"></div>
+      <div class="modal-container"></div>
+    </div>
+    <div class="icons_copyright">
+      <a target="_blank" href="https://icons8.com/icon/ivxtzg7cODnt/unchecked-checkbox">Unchecked Checkbox</a>
+      <a target="_blank" href="https://icons8.com/icon/44GBiduBu6Xa/checked-checkbox">Checked Checkbox</a>
+      <a target="_blank" href="https://icons8.com/icon/12082/edit">Edit</a>
+      <a target="_blank" href="https://icons8.com/icon/rCrCcLKc7afB/trash-can">Trash Can</a>
+      icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </div>
+  </body>
+</html>
